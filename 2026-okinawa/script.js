@@ -124,11 +124,45 @@ function initDayMap(containerId, day) {
 }
 
 /**
+ * 產生地點照片區塊 HTML(實照或 CSS 佔位圖)
+ * 實照一律附上 Commons 授權標示；佔位圖用該天代表色的漸層＋emoji。
+ * @param {object} photo - item.photo
+ * @param {number} dayNum - 第幾天(決定佔位圖配色)
+ */
+function renderPhoto(photo, dayNum) {
+  if (!photo) return "";
+  const color = window.DAY_COLORS[dayNum] || "#FF6B4A";
+
+  if (photo.placeholder) {
+    return `
+      <div class="stop-photo stop-photo--placeholder"
+           style="background:linear-gradient(135deg, ${color}22 0%, ${color}4D 100%); border-color:${color}66;"
+           role="img" aria-label="${escapeHtml(photo.alt || "照片待補")}">
+        <span class="stop-photo__emoji" aria-hidden="true">${photo.emoji || "📷"}</span>
+        <span class="stop-photo__pending">照片待補</span>
+      </div>`;
+  }
+
+  const c = photo.credit || {};
+  const creditHtml = (c.author && c.license && c.sourceUrl)
+    ? `<a class="stop-photo__credit" href="${c.sourceUrl}" target="_blank" rel="noopener">照片：${escapeHtml(c.author)} / ${escapeHtml(c.license)}</a>`
+    : "";
+
+  return `
+    <figure class="stop-photo">
+      <img src="${photo.src}" alt="${escapeHtml(photo.alt || "")}"
+           width="1200" height="675" loading="lazy" decoding="async">
+      ${creditHtml}
+    </figure>`;
+}
+
+/**
  * 產生逐時時間軸 HTML,插入到指定容器(供各天頁面共用)
  * @param {string} containerId
  * @param {Array} items - day.items
+ * @param {number} [dayNum] - 第幾天,用於佔位圖配色(省略時退回預設珊瑚紅)
  */
-function renderTimeline(containerId, items) {
+function renderTimeline(containerId, items, dayNum) {
   const el = document.getElementById(containerId);
   if (!el || !Array.isArray(items)) return;
   el.innerHTML = "";
@@ -167,6 +201,7 @@ function renderTimeline(containerId, items) {
         <div class="timeline-item__time">${escapeHtml(timeLabel)}</div>
         <div class="timeline-item__title">${escapeHtml(item.title)}</div>
         <div class="timeline-item__sub">${item.sub || ""}</div>
+        ${renderPhoto(item.photo, dayNum)}
         ${item.mapUrl ? `<a class="timeline-link" href="${item.mapUrl}" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px;">Google 地圖 →</a>` : ""}
         ${item.detailLink ? `<a class="timeline-link" href="${item.detailLink.href}" style="display:inline-block; margin-top:8px; margin-left:6px; background:#FFF0EC; border-color:#FFC9BB; color:#E5502E;">${escapeHtml(item.detailLink.label)}</a>` : ""}
         ${choicesHtml}
@@ -428,6 +463,11 @@ function renderHotelDetail(hotelId) {
   if (areaEl) areaEl.textContent = `${hotel.area}　${hotel.checkIn} → ${hotel.checkOut}（${hotel.nights}）`;
   const introEl = document.getElementById("hotel-intro");
   if (introEl) introEl.textContent = hotel.intro || "";
+  const photoEl = document.getElementById("hotel-photo");
+  if (photoEl && hotel.photo) {
+    // 佔位圖配色沿用該飯店入住當天的代表色
+    photoEl.innerHTML = renderPhoto(hotel.photo, hotelId === "hotel1" ? 1 : 4);
+  }
   const websiteEl = document.getElementById("hotel-website");
   if (websiteEl) websiteEl.href = hotel.website;
   const mapEl = document.getElementById("hotel-map-link");

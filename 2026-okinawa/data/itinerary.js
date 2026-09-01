@@ -60,6 +60,7 @@ window.TRIP = {
       lat: 26.4850, lon: 127.8250,
       detailUrl: "hotel1.html",
       hasDetail: true,
+      photo: { placeholder: true, emoji: "🏨", alt: "沖繩嘉利吉海灘海洋溫泉度假村（照片待補）" },
       intro: "以「森之湯」大展望浴場、多樣海洋活動與六間風格餐廳聞名的度假村，Day3飯店自由日整天都會待在這裡，以下是完整設施、活動與餐廳資訊（2026-09-01已用官網查證）。",
       facilities: [
         {
@@ -204,6 +205,7 @@ window.TRIP = {
       website: "https://en.palmroyal.co.jp/index.php",
       mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%91%E3%83%BC%E3%83%A0%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%ABNAHA%E5%9B%BD%E9%9A%9B%E9%80%9A",
       lat: 26.2141, lon: 127.6893,
+      photo: { placeholder: true, emoji: "🏨", alt: "沖繩國際通那霸棕櫚皇家度假飯店（照片待補）" },
       intro: "位於國際通上的都會度假飯店，官網主打「國際通上唯一擁有戶外泳池與樓頂大型公共浴池」的飯店，設施規模比恩納村的度假村小，適合Day4-6在市區逛街購物的兩晚（2026-09-01已用官網查證，內容以英文版官網為主，中文資訊較少，建議入住時再向櫃台確認細節）。",
       facilities: [
         {
@@ -261,6 +263,11 @@ window.TRIP = {
           type: "stop",
           time: "09:10", timeEnd: "10:30",
           title: "那霸機場",
+          photo: {
+            src: "images/day1-naha-airport.jpg",
+            alt: "那霸機場航廈外觀與候機大樓",
+            credit: { author: "663highland", license: "CC BY 2.5", sourceUrl: "https://commons.wikimedia.org/wiki/File:Naha_Airport12s3s4350.jpg" }
+          },
           sub: "拿行李，上車補眠",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E9%82%A3%E8%A6%87%E7%A9%BA%E6%B8%AF",
           lat: 26.1958, lon: 127.6459
@@ -270,6 +277,11 @@ window.TRIP = {
           type: "stop",
           time: "11:00", timeEnd: "12:00",
           title: "波上宮",
+          photo: {
+            src: "images/day1-naminoue.jpg",
+            alt: "波上宮座落於海崖之上，下方為波之上海灘",
+            credit: { author: "Zairon", license: "CC BY 4.0", sourceUrl: "https://commons.wikimedia.org/wiki/File:Naha_Naminoue_Beach_%26_Naminoue-gu_06.jpg" }
+          },
           sub: "沖繩最具代表性的神社之一",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B3%A2%E4%B8%8A%E5%AE%AE",
           lat: 26.2136, lon: 127.6693
@@ -279,6 +291,11 @@ window.TRIP = {
           type: "stop", highlight: true,
           time: "12:40", timeEnd: "15:30",
           title: "美國村",
+          photo: {
+            src: "images/day1-american-village.jpg",
+            alt: "美國村（美浜town resort）色彩繽紛的街景與 BLUE SEAL 冰淇淋店",
+            credit: { author: "Suikotei", license: "CC BY-SA 4.0", sourceUrl: "https://commons.wikimedia.org/wiki/File:Mihama_Town_Resort_American_Village_20160720.jpg" }
+          },
           sub: "在美國村逛街放鬆，午餐二選一（依當天現場決定，兩個選項都保留）",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E7%BE%8E%E6%B5%9C%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB%E3%83%B3%E3%83%93%E3%83%AC%E3%83%83%E3%82%B8",
           lat: 26.3156, lon: 127.7583,
@@ -304,6 +321,7 @@ window.TRIP = {
           type: "stop",
           time: "15:30", timeEnd: "16:00",
           title: "BLUE SEAL 北谷デポアイランド店",
+          photo: { placeholder: true, emoji: "🍦", alt: "BLUE SEAL 北谷德波島店（照片待補）" },
           sub: "沖繩人氣冰淇淋，美國村必吃甜點",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%96%E3%83%AB%E3%83%BC%E3%82%B7%E3%83%BC%E3%83%AB%E3%83%87%E3%83%9D%E3%82%A2%E3%82%A4%E3%83%A9%E3%83%B3%E3%83%89%E5%BA%97",
           lat: 26.3162, lon: 127.7607
@@ -313,6 +331,11 @@ window.TRIP = {
           type: "stop",
           time: "16:20", timeEnd: "17:10",
           title: "殘波岬公園",
+          photo: {
+            src: "images/day1-zanpa.jpg",
+            alt: "殘波岬的隆起珊瑚礁斷崖與東海海景",
+            credit: { author: "そらみみ (Soramimi)", license: "CC BY-SA 4.0", sourceUrl: "https://commons.wikimedia.org/wiki/File:Cliff_of_Cape_Zampa.JPG" }
+          },
           sub: "斷崖絕景／燈塔／風獅爺拍照",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%AE%98%E6%B3%A2%E5%B2%AC%E5%85%AC%E5%9C%92",
           lat: 26.5010, lon: 127.7086
@@ -322,6 +345,7 @@ window.TRIP = {
           type: "stop",
           time: "17:35", timeEnd: "18:10",
           title: "MaxValu 讀谷店",
+          photo: { placeholder: true, emoji: "🛒", alt: "MaxValu 讀谷店（照片待補）" },
           sub: "買熟食／便當當晚餐，順便採買",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%9E%E3%83%83%E3%82%AF%E3%82%B9%E3%83%90%E3%83%AA%E3%83%A5%E8%AA%AD%E8%B0%B7%E5%BA%97",
           lat: 26.3945, lon: 127.7280
@@ -331,6 +355,7 @@ window.TRIP = {
           type: "stop", isEnd: true,
           time: "約18:30",
           title: "入住喜璃癒志海灘渡假飯店",
+          photo: { placeholder: true, emoji: "🏨", alt: "喜璃癒志海灘渡假飯店（照片待補）" },
           sub: "Check-in，晚餐已在MaxValu解決",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
@@ -356,6 +381,7 @@ window.TRIP = {
           type: "stop",
           time: "約10:00",
           title: "喜璃癒志海灘渡假飯店",
+          photo: { placeholder: true, emoji: "🏨", alt: "喜璃癒志海灘渡假飯店（照片待補）" },
           sub: "飯店早餐，約10:00出發",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
@@ -365,6 +391,11 @@ window.TRIP = {
           type: "stop", highlight: true,
           time: "11:00", timeEnd: "16:00",
           title: "沖繩美麗海水族館",
+          photo: {
+            src: "images/day2-churaumi.jpg",
+            alt: "沖繩美麗海水族館「黑潮之海」大水槽中悠游的鯨鯊與魟魚",
+            credit: { author: "Megapixie", license: "Public domain", sourceUrl: "https://commons.wikimedia.org/wiki/File:Churaumi_Aquarium_main_tank_%27Kuroshio_Sea%27.jpg" }
+          },
           sub: "海洋博公園園區，餵鯨鯊15:00／17:00，海豚秀／海豚礁湖，海豚／海龜餵食¥500，停留拉長為約5小時",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E7%BE%8E%E3%82%89%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8",
           lat: 26.6940, lon: 127.8778
@@ -374,6 +405,7 @@ window.TRIP = {
           type: "stop", highlight: true,
           time: "17:00", timeEnd: "19:00",
           title: "燒肉King 名護店",
+          photo: { placeholder: true, emoji: "🥩", alt: "燒肉King 名護店（照片待補）" },
           sub: "吃到飽燒肉，小孩可自由取用喜歡的肉，務必事先訂位（平日17:00-23:00）",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E7%84%BC%E8%82%89%E3%82%AD%E3%83%B3%E3%82%B0%20%E5%90%8D%E8%AD%B7%E5%BA%97",
           lat: 26.5904, lon: 127.9757
@@ -383,6 +415,7 @@ window.TRIP = {
           type: "stop",
           time: "19:00", timeEnd: "19:45",
           title: "MEGA唐吉訶德 名護店",
+          photo: { placeholder: true, emoji: "🛍️", alt: "MEGA唐吉訶德 名護店（照片待補）" },
           sub: "逛街採買，已取代原本的MAX Valu Nago",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=MEGA%E5%94%90%E5%90%89%E8%A8%B6%E5%BE%B7%20%E5%90%8D%E8%AD%B7%E5%BA%97",
           lat: 26.5919, lon: 127.9722
@@ -392,6 +425,7 @@ window.TRIP = {
           type: "stop", isEnd: true,
           time: "約20:10",
           title: "返回喜璃癒志海灘渡假飯店",
+          photo: { placeholder: true, emoji: "🏨", alt: "喜璃癒志海灘渡假飯店（照片待補）" },
           sub: "結束一天行程，休息",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
@@ -417,6 +451,7 @@ window.TRIP = {
           type: "stop", highlight: true,
           time: "09:30", timeEnd: "16:00",
           title: "飯店設施＋海洋活動自由選",
+          photo: { placeholder: true, emoji: "🏊", alt: "飯店水上樂園與海洋活動（照片待補）" },
           sub: "整天在飯店自由活動：免費ワンダールーム兒童遊戲室、かりゆしウォーターランド水上樂園（滿4歲）、チャイルドチューブ兒童拖曳圈（1-6歲限定）、水上摩托車同乘、玻璃底船、ドラゴンボート（需身高100cm以上）等，完整費用／時段／年齡限制請見飯店詳情頁",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250,
@@ -426,6 +461,7 @@ window.TRIP = {
           type: "stop",
           time: "17:00", timeEnd: "19:00",
           title: "飯店晚餐",
+          photo: { placeholder: true, emoji: "🍽️", alt: "飯店晚餐（照片待補）" },
           sub: "飯店內餐廳選一間：THE DINING暖琉満菜、BBQガーデンCHI吃到飽、サンセットテラス（季節性）等，餐廳介紹與訂位連結請見飯店詳情頁",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250,
@@ -451,6 +487,7 @@ window.TRIP = {
           type: "stop",
           time: "N/A", timeEnd: "09:30",
           title: "喜璃癒志海灘渡假飯店",
+          photo: { placeholder: true, emoji: "🏨", alt: "喜璃癒志海灘渡假飯店（照片待補）" },
           sub: "Check-out，帶行李",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
@@ -460,6 +497,11 @@ window.TRIP = {
           type: "stop", highlight: true,
           time: "10:00", timeEnd: "14:30",
           title: "AEON MALL沖縄ライカム",
+          photo: {
+            src: "images/day4-rycom.jpg",
+            alt: "AEON MALL 沖縄ライカム主入口與棕櫚樹",
+            credit: { author: "Kugel~commonswiki", license: "CC BY-SA 4.0", sourceUrl: "https://commons.wikimedia.org/wiki/File:AEON_Mall_Okinawa_Rycom_01.JPG" }
+          },
           sub: "午餐／大創／UNIQLO／寶可夢中心／3COINS+plus／超市。現場各樓層都有置物櫃（大中小尺寸、1F含冷藏櫃），建議先到服務台拿折扣券",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB%E6%B2%96%E7%B8%84%E3%83%A9%E3%82%A4%E3%82%AB%E3%83%A0",
           lat: 26.3395, lon: 127.8016
@@ -469,6 +511,7 @@ window.TRIP = {
           type: "stop", isEnd: true,
           time: "15:10", timeEnd: "16:10",
           title: "入住那霸棕櫚皇家度假飯店",
+          photo: { placeholder: true, emoji: "🏨", alt: "那霸棕櫚皇家度假飯店（照片待補）" },
           sub: "Check-in飯店2",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%91%E3%83%BC%E3%83%A0%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%ABNAHA%E5%9B%BD%E9%9A%9B%E9%80%9A",
           lat: 26.2141, lon: 127.6893
@@ -478,6 +521,11 @@ window.TRIP = {
           type: "stop",
           time: "16:20", timeEnd: "",
           title: "平和通商店街 → 牧志公設市場 → 國際通／屋台村夜市",
+          photo: {
+            src: "images/day4-kokusai.jpg",
+            alt: "那霸國際通街景，兩側是伴手禮店與棕櫚行道樹",
+            credit: { author: "663highland", license: "CC BY 2.5", sourceUrl: "https://commons.wikimedia.org/wiki/File:Kokusai-dori08s3s4440.jpg" }
+          },
           sub: "逛街購物、買海產樓上代客料理、藥妝店逛街，吃晚餐，自由活動不趕時間，玩累直接回飯店",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%B1%8B%E5%8F%B0%E6%9D%91",
           lat: 26.2160, lon: 127.6890
@@ -502,6 +550,7 @@ window.TRIP = {
           type: "stop",
           time: "N/A", timeEnd: "09:30",
           title: "那霸棕櫚皇家度假飯店",
+          photo: { placeholder: true, emoji: "🏨", alt: "那霸棕櫚皇家度假飯店（照片待補）" },
           sub: "飯店早餐後出發（一日來回，仍住飯店2，不用搬行李）",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%91%E3%83%BC%E3%83%A0%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%ABNAHA%E5%9B%BD%E9%9A%9B%E9%80%9A",
           lat: 26.2141, lon: 127.6893
@@ -511,6 +560,11 @@ window.TRIP = {
           type: "stop", highlight: true,
           time: "10:10", timeEnd: "13:00",
           title: "玉泉洞＆沖繩世界",
+          photo: {
+            src: "images/day5-gyokusendo.jpg",
+            alt: "玉泉洞鐘乳石洞內的步道與鐘乳石群",
+            credit: { author: "FoxyStranger Kawasaki", license: "CC BY-SA 3.0", sourceUrl: "https://commons.wikimedia.org/wiki/File:Gyokusendo_Cave_-_panoramio.jpg" }
+          },
           sub: "超過一百萬個鐘乳石柱的巨大天然洞窟，停留拉長為約2.8小時",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%81%8A%E3%81%8D%E3%81%AA%E3%82%8F%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%20%E7%8E%89%E6%B3%89%E6%B4%9E",
           lat: 26.1004, lon: 127.7318
@@ -520,6 +574,7 @@ window.TRIP = {
           type: "stop", isEnd: true,
           time: "13:40", timeEnd: "20:00",
           title: "PARCO City",
+          photo: { placeholder: true, emoji: "🛍️", alt: "沖繩 PARCO CITY（照片待補）" },
           sub: "逛街購物用餐。回程可選計程車（約28分／¥2,150）或公車309號（約50分／約¥280-500）",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84PARCO%20CITY",
           lat: 26.1560, lon: 127.6474
@@ -544,6 +599,7 @@ window.TRIP = {
           type: "stop",
           time: "N/A", timeEnd: "10:00",
           title: "那霸棕櫚皇家度假飯店",
+          photo: { placeholder: true, emoji: "🏨", alt: "那霸棕櫚皇家度假飯店（照片待補）" },
           sub: "退房，帶行李搭計程車",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%91%E3%83%BC%E3%83%A0%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%ABNAHA%E5%9B%BD%E9%9A%9B%E9%80%9A",
           lat: 26.2141, lon: 127.6893
@@ -553,6 +609,7 @@ window.TRIP = {
           type: "stop", highlight: true,
           time: "10:30", timeEnd: "13:00",
           title: "IIAS沖繩豐崎",
+          photo: { placeholder: true, emoji: "🛍️", alt: "IIAS 沖繩豐崎（照片待補）" },
           sub: "DMM水族館、購物、美食、退稅通通有；行李可寄放1F置物櫃（含冷藏櫃，10:00-21:00當日付費使用），逛街不用隨身帶著",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%83%BC%E3%82%A2%E3%82%B9%E6%B2%96%E7%B8%84%E8%B1%8A%E5%B4%8E",
           lat: 26.1478, lon: 127.6470
@@ -562,6 +619,11 @@ window.TRIP = {
           type: "stop", isEnd: true, icon: "✈️",
           time: "約13:30",
           title: "那霸機場",
+          photo: {
+            src: "images/day1-naha-airport.jpg",
+            alt: "那霸機場航廈外觀與候機大樓",
+            credit: { author: "663highland", license: "CC BY 2.5", sourceUrl: "https://commons.wikimedia.org/wiki/File:Naha_Airport12s3s4350.jpg" }
+          },
           sub: "取回行李，提前2小時到機場，準備搭乘星宇航空JX871 15:25起飛→16:10抵達桃園T1",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E9%82%A3%E8%A6%87%E7%A9%BA%E6%B8%AF",
           lat: 26.1958, lon: 127.6459

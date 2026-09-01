@@ -717,6 +717,63 @@ img { max-width: 100%; display: block; }
   border-color: #F0D89B;
 }
 
+/* ---------- 時間軸：地點照片 ---------- */
+
+.stop-photo {
+  position: relative;
+  margin: 10px 0 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-soft);
+}
+
+.stop-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.stop-photo__credit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  max-width: 100%;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm) 0 0 0;
+  background: rgba(255, 255, 255, 0.82);
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.stop-photo__credit:hover { color: var(--ink-muted); }
+
+/* 佔位圖：該天代表色的柔和漸層 ＋ 大 emoji ＋「照片待補」
+   漸層與框線色由 renderPhoto() 以 inline style 帶入(該天代表色 + 透明度) */
+.stop-photo--placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 2px dashed var(--line-strong);
+}
+
+.stop-photo__emoji { font-size: 40px; line-height: 1; }
+
+.stop-photo__pending {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
 /* ---------- 行程總覽：吸頂快速導覽列 ---------- */
 
 .quick-nav {
