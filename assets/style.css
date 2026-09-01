@@ -745,6 +745,41 @@ img { max-width: 100%; display: block; }
   gap: 8px;
 }
 
+/* 分類標題列（可點擊展開／收合） */
+.category-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 0;
+  margin: 34px 0 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+
+.category-head .section-title { margin: 0; }
+
+.category-head__toggle {
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-muted);
+  transition: transform 0.2s ease;
+}
+
+section.is-collapsed .category-head__toggle { transform: rotate(-90deg); }
+
+section.is-collapsed .facility-grid { display: none; }
+
 .chip--filter {
   cursor: pointer;
   font-family: inherit;

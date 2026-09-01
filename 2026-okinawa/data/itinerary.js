@@ -354,8 +354,8 @@ window.TRIP = {
         {
           type: "stop", isEnd: true,
           time: "約18:30",
-          title: "入住喜璃癒志海灘渡假飯店",
-          photo: { placeholder: true, emoji: "🏨", alt: "喜璃癒志海灘渡假飯店（照片待補）" },
+          title: "入住沖繩嘉利吉海灘海洋溫泉度假村",
+          photo: { placeholder: true, emoji: "🏨", alt: "沖繩嘉利吉海灘海洋溫泉度假村（照片待補）" },
           sub: "Check-in，晚餐已在MaxValu解決",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
@@ -380,8 +380,8 @@ window.TRIP = {
         {
           type: "stop",
           time: "約10:00",
-          title: "喜璃癒志海灘渡假飯店",
-          photo: { placeholder: true, emoji: "🏨", alt: "喜璃癒志海灘渡假飯店（照片待補）" },
+          title: "沖繩嘉利吉海灘海洋溫泉度假村",
+          photo: { placeholder: true, emoji: "🏨", alt: "沖繩嘉利吉海灘海洋溫泉度假村（照片待補）" },
           sub: "飯店早餐，約10:00出發",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
@@ -424,8 +424,8 @@ window.TRIP = {
         {
           type: "stop", isEnd: true,
           time: "約20:10",
-          title: "返回喜璃癒志海灘渡假飯店",
-          photo: { placeholder: true, emoji: "🏨", alt: "喜璃癒志海灘渡假飯店（照片待補）" },
+          title: "返回沖繩嘉利吉海灘海洋溫泉度假村",
+          photo: { placeholder: true, emoji: "🏨", alt: "沖繩嘉利吉海灘海洋溫泉度假村（照片待補）" },
           sub: "結束一天行程，休息",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
@@ -486,8 +486,8 @@ window.TRIP = {
         {
           type: "stop",
           time: "N/A", timeEnd: "09:30",
-          title: "喜璃癒志海灘渡假飯店",
-          photo: { placeholder: true, emoji: "🏨", alt: "喜璃癒志海灘渡假飯店（照片待補）" },
+          title: "沖繩嘉利吉海灘海洋溫泉度假村",
+          photo: { placeholder: true, emoji: "🏨", alt: "沖繩嘉利吉海灘海洋溫泉度假村（照片待補）" },
           sub: "Check-out，帶行李",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
@@ -643,7 +643,7 @@ window.TRIP = {
         "護照（效期需6個月以上）",
         "Visit Japan Web 入境申請（入境審查＋海關申報 QR code，出發前至少 6 小時完成）",
         "電子機票／登機證",
-        "訂房確認信（喜璃癒志海灘渡假飯店／那霸棕櫚皇家度假飯店）",
+        "訂房確認信（沖繩嘉利吉海灘海洋溫泉度假村／那霸棕櫚皇家度假飯店）",
         "信用卡",
         "日圓現金",
         "旅遊平安險保單"

@@ -68,22 +68,40 @@
   const body = document.getElementById("shopping-body");
   body.innerHTML = list.map((group, gIdx) => {
     const colorKey = CATEGORY_COLOR_KEY[gIdx % CATEGORY_COLOR_KEY.length];
-    const cards = (group.items || []).map((item) => `
+    const items = group.items || [];
+    const cards = items.map((item) => {
+      // 只有實際拍到／找到照片的商品才顯示照片區，佔位圖不佔版面
+      const hasPhoto = item.photo && !item.photo.placeholder;
+      return `
       <div class="facility-card" data-days="${daysOf(item.where || "").join(",")}">
         <div class="facility-card__title">${escapeHtml(item.name)}</div>
         <div class="facility-card__row">${escapeHtml(item.desc)}</div>
-        ${renderPhoto(item.photo, colorKey)}
+        ${hasPhoto ? renderPhoto(item.photo, colorKey) : ""}
         <div class="facility-card__badges" style="align-items:center; margin-top:8px;">
           <span style="font-size:13px; font-weight:800; color:var(--ink);">哪裡買：</span>
           ${whereChips(item.where)}
         </div>
-      </div>`).join("");
+      </div>`;
+    }).join("");
     return `
-      <section data-category="${escapeHtml(group.category)}">
-        <h2 class="section-title">${group.emoji || ""} ${escapeHtml(group.category)}</h2>
+      <section data-category="${escapeHtml(group.category)}" class="is-collapsed">
+        <button type="button" class="category-head" aria-expanded="false">
+          <h2 class="section-title">${group.emoji || ""} ${escapeHtml(group.category)}</h2>
+          <span class="chip" data-role="count">${items.length} 項</span>
+          <span class="category-head__toggle" aria-hidden="true">▾</span>
+        </button>
         <div class="facility-grid">${cards}</div>
       </section>`;
   }).join("");
+
+  /* ---------- 分類展開／收合（預設收合） ---------- */
+  body.addEventListener("click", (e) => {
+    const head = e.target.closest(".category-head");
+    if (!head) return;
+    const section = head.closest("section");
+    const collapsed = section.classList.toggle("is-collapsed");
+    head.setAttribute("aria-expanded", String(!collapsed));
+  });
 
   /* ---------- 購物提醒 ---------- */
   const notesEl = document.getElementById("shopping-notes");
@@ -115,12 +133,27 @@
         const match = day === "all" || c.dataset.days.split(",").includes(day);
         c.style.display = match ? "" : "none";
       });
-      // 整個分類都被篩掉時連標題一起收起來，才不會留下空標題
+
       sections.forEach((s) => {
-        const visible = Array.from(s.querySelectorAll(".facility-card"))
-          .some((c) => c.style.display !== "none");
-        s.style.display = visible ? "" : "none";
+        const inSection = Array.from(s.querySelectorAll(".facility-card"));
+        const shown = inSection.filter((c) => c.style.display !== "none");
+        // 整個分類都被篩掉時連標題一起收起來，才不會留下空標題
+        s.style.display = shown.length ? "" : "none";
+
+        const countEl = s.querySelector('[data-role="count"]');
+        if (countEl) {
+          countEl.textContent = day === "all"
+            ? `${inSection.length} 項`
+            : `${shown.length} / ${inSection.length} 項`;
+        }
+
+        // 篩選特定天數時自動展開（不然按了篩選卻什麼都看不到）；回到「全部」再收合
+        const head = s.querySelector(".category-head");
+        const collapsed = day === "all" || !shown.length;
+        s.classList.toggle("is-collapsed", collapsed);
+        if (head) head.setAttribute("aria-expanded", String(!collapsed));
       });
+
       buttons.forEach((b) => b.classList.toggle("is-active", b.dataset.day === day));
     }
 
