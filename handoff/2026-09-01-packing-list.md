@@ -125,7 +125,7 @@ packingList: [
   - `2026-okinawa/packing.html`（**新增**）
   - `2026-okinawa/data/itinerary.js`（**修改**：在 `window.TRIP` 最後新增 `packingList` 欄位）
   - `assets/style.css`（**修改**：檔尾新增「行前準備：打包清單」樣式區塊）
-  - `.claude/launch.json`、`.gitignore`（**新增**，非網站內容，見下方「偏離原規格」說明）
+  - `.claude/launch.json`、`.gitignore`、`.nojekyll`（**新增**，非網站內容，見下方「偏離原規格」說明）
   - `handoff/2026-09-01-packing-list.md`（本回報）
 
 - 做了什麼：
@@ -143,7 +143,7 @@ packingList: [
   2. **多做了兩個規格沒提到的小東西**：進度條（純視覺，配合「進度顯示」需求）、每個分類標題旁的「n / m」小 chip（一眼看出哪一類還沒收完）。若覺得太雜可以拿掉，說一聲即可。
   3. **「全部清除」加了 confirm 確認**：規格只說「可以正常重置」，我加了一層確認以免誤觸。
   4. **頁面邏輯寫在 `packing.html` 內嵌 `<script>`，沒有放進 `script.js`**：`escapeHtml()` 有重複使用 `script.js` 的版本，但打包清單的渲染／localStorage 邏輯只有這一頁會用到，放進 `script.js` 會讓其他 8 個頁面都白載入這段程式碼。作法比照 `index.html` / `day*.html` 的頁面專屬邏輯內嵌慣例。若之後其他行程也要打包清單頁，再抽成共用 `renderPackingList()` 會比較合理。
-  5. **範圍外新增檔案**：`.claude/launch.json`（本機起 http server 用的設定，方便日後每次交辦都能實際開瀏覽器測）與 `.gitignore`（排除 `.claude/settings.local.json` 這種本機專屬設定）。兩者都不影響網站輸出，如果不希望它們進 repo 可以直接刪掉。
+  5. **範圍外新增檔案**：`.claude/launch.json`（本機起 http server 用的設定，方便日後每次交辦都能實際開瀏覽器測）、`.gitignore`（排除 `.claude/settings.local.json` 這種本機專屬設定）、`.nojekyll`（修 GitHub Pages 建置失敗，見「待確認」第 1 點，**這個請保留**）。前兩者不影響網站輸出，如果不希望它們進 repo 可以直接刪掉。
   6. **清單內容完全沒動**：規格說發現明顯遺漏可以提建議 —— 目前看下來涵蓋度很完整，沒有要補的。唯一想確認的見「待確認」第 2 點。
 
 - 怎麼測試的：
@@ -159,7 +159,13 @@ packingList: [
   9. Leaflet 地圖與 Open-Meteo 在本機有真實網路，皆正常載入（天氣因距離 2026/10 超過 16 天預報範圍，如預期顯示「出發前再回來看」的提示文案，非錯誤）。
 
 - 待確認／已知問題：
-  1. **GitHub 遠端當時是空的（沒有任何 branch／commit）**：`git ls-remote https://github.com/Shihjia/Travel.git` 回傳 0 筆 ref，而且本機 `C:\Project\Travel` 原本也**不是** git repo。所以這次不是單純加一個 commit，而是做了 `git init` ＋ 把整個專案（含既有 8 個頁面、`assets/`、`202610日本沖繩/` 規劃 md、`handoff/`）建成第一個 commit 後 push 到 `main`。**請確認 GitHub Pages 的發佈來源是否已設成 `main` 分支根目錄**，不然頁面不會出來。另外也請確認 repo 名稱拼字（`Shihjia/Travel`）確實是要用的那一個。
+  1. ~~**GitHub 遠端當時是空的**，需確認 Pages 發佈來源~~ → **已處理完畢，網站已上線**：
+     - `git ls-remote` 當時回傳 0 筆 ref，本機 `C:\Project\Travel` 原本也**不是** git repo，因此這次做了 `git init` ＋ 把整個專案（含既有 8 個頁面、`assets/`、`202610日本沖繩/` 規劃 md、`handoff/`）建成第一個 commit 後 push 到 `main`。
+     - Pages 發佈來源查證結果**本來就已經設定正確**（`source: { branch: "main", path: "/" }`），不需要調整。
+     - 但**首次建置失敗、全站 404**：GitHub Pages 預設會跑 Jekyll，而 Jekyll 把 `202610日本沖繩/沖繩行程_逐日行程_Day5_1024.md` 開頭的 `---` / `Day 5：2026/10/24(六)` / `---` 當成 YAML front matter 去解析，格式不合法 → **整站建置中斷**，所有頁面都出不來。
+     - 修法：repo 根目錄新增空檔 `.nojekyll`，讓 Pages 跳過 Jekyll、直接原樣輸出靜態檔（本站是純手寫 HTML，本來就不需要 Jekyll）。**沒有更動那份規劃 md 的任何內容**（那是規劃端的檔案）。
+     - 重新建置後已驗證線上實際可用：`/`、`/2026-okinawa/`、`packing.html`、`day1.html`、`hotel1.html`、`data/itinerary.js`、`assets/style.css` 全部 HTTP 200，並在 `https://shihjia.github.io/Travel/2026-okinawa/packing.html` 實際操作過（6 分類 35 項、勾選、localStorage 寫入、進度更新都正常）。
+     - **提醒**：日後只要在 `202610日本沖繩/` 或 `handoff/` 新增以 `---` 開頭的 markdown，有了 `.nojekyll` 就不會再讓網站掛掉，這個檔案請不要刪除。
   2. **打勾狀態是「單一裝置單一瀏覽器」的**：手機勾的不會同步到電腦，這是規格「不做雲端同步」的預期行為，只是使用者實際用起來可能會問，先提醒一下。頁面上已加一行小字說明。
   3. **清單內容小建議（非必要）**：「證件與財力」裡的「飯店1、飯店2訂房確認信」如果換成實際飯店名稱（沖繩國際通那霸棕櫚皇家度假飯店／另一家）會更好對照，但這屬於內容決策，等規劃端決定再改，我沒有自行更動。
   4. `2026-okinawa/style.css` 目前是空的預留檔且沒有任何頁面載入它，這次的樣式依規格放在 `assets/style.css`，維持現狀沒有動它。
