@@ -717,6 +717,46 @@ img { max-width: 100%; display: block; }
   border-color: #F0D89B;
 }
 
+/* ---------- 行程總覽：吸頂快速導覽列 ---------- */
+
+.quick-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1200; /* 要蓋過 Leaflet 的控制項（z-index 最高 1000） */
+  background: rgba(255, 253, 246, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1.5px solid var(--line-strong);
+}
+
+.quick-nav__inner {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.quick-nav__inner::-webkit-scrollbar { display: none; }
+
+.quick-nav .chip {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.quick-nav .chip:hover { border-color: var(--sky); }
+
+.quick-nav .chip.is-active {
+  background: var(--coral);
+  color: #fff;
+  border-color: var(--coral-deep);
+}
+
+/* 吸頂列會蓋住標題，錨點跳轉時預留高度 */
+.has-quick-nav .section-title { scroll-margin-top: 66px; }
+
 /* ---------- 行前準備：打包清單 ---------- */
 
 .checklist-head {

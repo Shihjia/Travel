@@ -30,7 +30,8 @@
     flex-wrap: wrap;
     gap: 20px;
   }
-  .portal-body { margin-top: -40px; }
+  /* 不用負 margin 往上拉，否則第一個 .year-row（margin-top:30px）會疊到 hero 下緣 */
+  .portal-body { margin-top: 0; }
 </style>
 </head>
 <body>

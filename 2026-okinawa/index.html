@@ -26,7 +26,7 @@
   .day-card__weather .weather__note { font-size: 10.5px; }
 </style>
 </head>
-<body>
+<body class="has-quick-nav">
 
 <header class="hero">
   <div class="hero__sun" aria-hidden="true">☀️</div>
@@ -36,15 +36,25 @@
   <p class="hero__date">2026/10/20（二）－ 10/25（日）・6天5夜</p>
 </header>
 
+<nav class="quick-nav" aria-label="頁面快速導覽">
+  <div class="quick-nav__inner container">
+    <a class="chip" href="#sec-flights">✈️ 班機資訊</a>
+    <a class="chip" href="#sec-hotels">🏨 住宿資訊</a>
+    <a class="chip" href="#sec-map">🗺️ 行程地圖</a>
+    <a class="chip" href="#sec-days">📅 逐日行程</a>
+    <a class="chip" href="#sec-prep">🎒 行前準備</a>
+  </div>
+</nav>
+
 <main class="container page-body">
 
-  <h2 class="section-title">✈️ 班機資訊</h2>
+  <h2 class="section-title" id="sec-flights">✈️ 班機資訊</h2>
   <div class="info-grid" id="flight-grid"></div>
 
-  <h2 class="section-title">🏨 住宿資訊</h2>
+  <h2 class="section-title" id="sec-hotels">🏨 住宿資訊</h2>
   <div class="info-grid" id="hotel-grid"></div>
 
-  <h2 class="section-title">🗺️ 全行程地圖</h2>
+  <h2 class="section-title" id="sec-map">🗺️ 全行程地圖</h2>
   <p class="section-note">點下方圖例可切換顯示／隱藏每一天的路線。</p>
   <div class="map-panel">
     <div class="map-panel__title">六天路線總覽</div>
@@ -52,10 +62,10 @@
     <div class="map-panel__legend" id="overview-legend"></div>
   </div>
 
-  <h2 class="section-title">📅 逐日行程</h2>
+  <h2 class="section-title" id="sec-days">📅 逐日行程</h2>
   <div class="day-grid" id="day-grid"></div>
 
-  <h2 class="section-title">🎒 行前準備</h2>
+  <h2 class="section-title" id="sec-prep">🎒 行前準備</h2>
   <div class="day-grid" style="grid-template-columns:1fr;">
     <a class="day-card" href="packing.html" style="max-width:360px;">
       <div class="day-card__num">🧳</div>
@@ -148,6 +158,46 @@
 
   // ---------- 全行程地圖 ----------
   initOverviewMap("overview-map", "overview-legend", trip);
+
+  // ---------- 快速導覽：捲到哪一區就標亮哪一個 ----------
+  (function initQuickNav() {
+    const nav = document.querySelector(".quick-nav");
+    const links = Array.from(document.querySelectorAll(".quick-nav .chip"));
+    if (!nav || !links.length) return;
+
+    const sections = links
+      .map((a) => ({ link: a, el: document.getElementById(a.getAttribute("href").slice(1)) }))
+      .filter((s) => s.el);
+
+    // 標題只有 20 幾 px 高，用 IntersectionObserver 的偵測帶容易整個跳過，
+    // 改成直接依捲動位置判斷「最後一個已經捲到導覽列下方的標題」
+    function update() {
+      const line = nav.getBoundingClientRect().height + 8;
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      let current = null;
+
+      if (atBottom) {
+        current = sections[sections.length - 1];
+      } else {
+        sections.forEach((s) => {
+          if (s.el.getBoundingClientRect().top <= line) current = s;
+        });
+      }
+      links.forEach((a) => a.classList.toggle("is-active", !!current && a === current.link));
+    }
+
+    // 用可取消的 rAF handle 而不是 boolean 旗標：分頁在背景時 rAF 不會觸發，
+    // 布林旗標會永遠卡在 true，之後就再也不更新了
+    let raf = 0;
+    function onScroll() {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => { raf = 0; update(); });
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    update();
+  })();
 </script>
 
 </body>
