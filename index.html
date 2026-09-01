@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShihChia 的旅行地圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .portal-hero {
+    background: linear-gradient(135deg, var(--sky) 0%, #4FC3D9 55%, var(--sun) 130%);
+    padding: 56px 22px 70px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .portal-hero__emoji { font-size: 40px; }
+  .portal-hero__title {
+    font-family: "Fredoka", "Noto Sans TC", sans-serif;
+    font-size: 34px;
+    color: #fff;
+    text-shadow: 0 3px 0 rgba(0,0,0,0.08);
+    margin: 10px 0 8px;
+  }
+  .portal-hero__sub { font-size: 14.5px; color: #FFF9E8; font-weight: 700; }
+  .trip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .portal-body { margin-top: -40px; }
+</style>
+</head>
+<body>
+
+<header class="hero portal-hero">
+  <div class="portal-hero__emoji">🏝️☀️🧳</div>
+  <h1 class="portal-hero__title">ShihChia 的旅行地圖</h1>
+  <p class="portal-hero__sub">家庭旅遊行程總整理，依年份收藏每一趟旅程</p>
+</header>
+
+<main class="container portal-body">
+
+  <div class="year-row">
+    <span class="year-row__num">2026</span>
+    <span class="year-row__line"></span>
+  </div>
+
+  <div class="trip-grid">
+    <a class="trip-card" href="2026-okinawa/index.html" style="display:block;">
+      <div class="trip-card__cover">
+        <span class="chip chip--map" style="background:#fff;">10/20 - 10/25</span>
+      </div>
+      <div class="trip-card__body">
+        <div class="trip-card__title">沖繩親子自由行</div>
+        <div class="trip-card__dates">2026/10/20（二）－ 10/25（日）・6天5夜</div>
+        <div class="trip-card__teaser">帶著4.5歲的孩子，飛去沖繩曬太陽、玩水、吃燒肉 🍧🚗</div>
+      </div>
+    </a>
+
+    <div class="empty-slot">
+      <span style="font-size:26px;">➕</span>
+      <span style="font-weight:800; font-size:13px;">下一趟旅程</span>
+      <span style="font-size:12px;">敬請期待</span>
+    </div>
+  </div>
+
+  <footer class="site-footer">ShihChia 的旅行地圖 · 用 🧡 手工打造</footer>
+
+</main>
+
+</body>
+</html>

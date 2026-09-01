@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行前準備打包清單 － 沖繩親子自由行</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="hero hero--compact">
+  <div class="hero__sun" aria-hidden="true">🧳</div>
+  <a class="hero__back" href="index.html">← 回行程總覽</a>
+  <p class="hero__eyebrow">行前準備</p>
+  <h1 class="hero__title display" style="font-size:26px; margin-top:6px;">打包清單</h1>
+  <p class="hero__date" style="font-weight:700;">出發前對照打勾，不漏東漏西</p>
+</header>
+
+<main class="container page-body">
+
+  <div class="card" style="padding:16px 18px; margin-bottom:6px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <div>
+        <div style="font-size:14px; color:var(--ink-muted); font-weight:700;">打包進度</div>
+        <div class="weather__temp" id="progress-text" style="font-size:23px;">－</div>
+      </div>
+      <button type="button" class="btn btn-outline" id="reset-btn">🧹 全部清除</button>
+    </div>
+    <div class="progress-bar"><div class="progress-bar__fill" id="progress-fill"></div></div>
+    <p class="section-note" style="margin:10px 0 0; font-size:13.5px;">
+      勾選狀態會存在這台裝置的瀏覽器裡，關掉頁面下次再打開也還在。
+    </p>
+  </div>
+
+  <div id="packing-body"></div>
+
+  <footer class="site-footer">ShihChia 的旅行地圖 · 沖繩親子自由行 2026</footer>
+
+</main>
+
+<script src="script.js"></script>
+<script src="data/itinerary.js"></script>
+<script>
+  const trip = window.TRIP;
+  const STORAGE_KEY = "packing:2026-okinawa";
+
+  /* ---------- localStorage 存取（無痕模式／被封鎖時降級為不記憶） ---------- */
+  function loadChecked() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return new Set(raw ? JSON.parse(raw) : []);
+    } catch (err) {
+      return new Set();
+    }
+  }
+
+  function saveChecked(set) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(set)));
+    } catch (err) {
+      /* 寫入失敗（例如無痕模式）就只在本次瀏覽有效，不中斷頁面 */
+    }
+  }
+
+  const checked = loadChecked();
+
+  /* 用「分類｜項目文字」當 key，之後清單增刪順序調整也不會錯位 */
+  function itemKey(category, item) {
+    return category + "|" + item;
+  }
+
+  /* ---------- 渲染清單 ---------- */
+  const body = document.getElementById("packing-body");
+  const list = Array.isArray(trip.packingList) ? trip.packingList : [];
+
+  body.innerHTML = list.map((group) => {
+    const itemsHtml = (group.items || []).map((item) => {
+      const key = itemKey(group.category, item);
+      const isDone = checked.has(key);
+      return `
+        <label class="check-item${isDone ? " is-done" : ""}">
+          <input type="checkbox" data-key="${escapeHtml(key)}"${isDone ? " checked" : ""}>
+          <span class="check-item__text">${escapeHtml(item)}</span>
+        </label>`;
+    }).join("");
+    return `
+      <section data-category="${escapeHtml(group.category)}">
+        <div class="checklist-head">
+          <h2 class="section-title">${escapeHtml(group.category)}</h2>
+          <span class="chip" data-role="group-count"></span>
+        </div>
+        <div class="card"><div class="check-list">${itemsHtml}</div></div>
+      </section>`;
+  }).join("");
+
+  /* ---------- 進度顯示 ---------- */
+  const boxes = Array.from(body.querySelectorAll('input[type="checkbox"]'));
+  const progressText = document.getElementById("progress-text");
+  const progressFill = document.getElementById("progress-fill");
+
+  function updateProgress() {
+    const done = boxes.filter((b) => b.checked).length;
+    const total = boxes.length;
+    progressText.textContent = `已完成 ${done} / ${total} 項`;
+    progressFill.style.width = total ? (done / total * 100) + "%" : "0%";
+
+    body.querySelectorAll("section").forEach((section) => {
+      const groupBoxes = Array.from(section.querySelectorAll('input[type="checkbox"]'));
+      const groupDone = groupBoxes.filter((b) => b.checked).length;
+      const countEl = section.querySelector('[data-role="group-count"]');
+      if (countEl) countEl.textContent = `${groupDone} / ${groupBoxes.length}`;
+    });
+  }
+
+  /* ---------- 勾選互動 ---------- */
+  body.addEventListener("change", (e) => {
+    const box = e.target;
+    if (!box.matches('input[type="checkbox"]')) return;
+    const key = box.dataset.key;
+    if (box.checked) {
+      checked.add(key);
+    } else {
+      checked.delete(key);
+    }
+    box.closest(".check-item").classList.toggle("is-done", box.checked);
+    saveChecked(checked);
+    updateProgress();
+  });
+
+  /* ---------- 全部清除 ---------- */
+  document.getElementById("reset-btn").addEventListener("click", () => {
+    if (!confirm("確定要清除所有打勾紀錄嗎？")) return;
+    checked.clear();
+    saveChecked(checked);
+    boxes.forEach((b) => {
+      b.checked = false;
+      b.closest(".check-item").classList.remove("is-done");
+    });
+    updateProgress();
+  });
+
+  updateProgress();
+</script>
+
+</body>
+</html>

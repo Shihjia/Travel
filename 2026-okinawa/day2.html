@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day2 － 沖繩親子自由行</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+
+<header class="hero hero--compact">
+  <div class="hero__sun" aria-hidden="true">☀️</div>
+  <a class="hero__back" href="index.html">← 回行程總覽</a>
+  <div class="day-badge" style="margin-top:6px;">
+    <span class="day-badge__num display">Day 2</span>
+    <span class="day-badge__label" id="day-date-label"></span>
+  </div>
+  <h1 class="hero__title display" id="day-title" style="font-size:26px; margin-top:8px;"></h1>
+</header>
+
+<main class="container page-body">
+
+  <div class="card weather-panel" id="weather-box"></div>
+
+  <div id="map-section">
+    <h2 class="section-title" style="margin-top:0;">🗺️ 今日路線</h2>
+    <div class="map-panel">
+      <div class="map-panel__title" id="map-title"></div>
+      <div class="map-panel__canvas" id="day-map" style="height:280px;"></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">📍 逐時行程</h2>
+  <div class="timeline card" style="padding:18px;" id="timeline"></div>
+
+  <div class="day-nav">
+    <a href="day1.html">← Day1</a>
+    <a href="index.html">回總覽</a>
+    <a href="day3.html">Day3 →</a>
+  </div>
+
+  <footer class="site-footer">ShihChia 的旅行地圖 · 沖繩親子自由行 2026</footer>
+
+</main>
+
+<script src="script.js"></script>
+<script src="data/itinerary.js"></script>
+<script>
+  const trip = window.TRIP;
+  const day = trip.days.find((d) => d.day === 2);
+  const color = window.DAY_COLORS[2];
+
+  document.getElementById("day-date-label").textContent = `${shortDate(day.date)}（${day.weekday}）`;
+  document.getElementById("day-title").textContent = day.title + "：" + day.desc;
+  document.title = `Day2 ${day.title} － 沖繩親子自由行`;
+
+  loadWeather("weather-box", day.weatherAnchor.lat, day.weatherAnchor.lon, day.date);
+
+  if (day.noMap) {
+    document.getElementById("map-section").style.display = "none";
+  } else {
+    document.getElementById("map-title").textContent = `Day2路線：${day.title}`;
+    initDayMap("day-map", day);
+  }
+
+  renderTimeline("timeline", day.items);
+</script>
+
+</body>
+</html>

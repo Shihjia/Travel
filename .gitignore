@@ -1,0 +1,6 @@
+# Claude Code 本機專屬設定（每台機器不同，不進版控）
+.claude/settings.local.json
+
+# OS / 編輯器
+Thumbs.db
+.DS_Store

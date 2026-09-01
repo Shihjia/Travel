@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沖繩親子自由行 － ShihChia 的旅行地圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  .day-card__weather {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--line-strong);
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    min-height: 20px;
+  }
+  .day-card__weather .weather__icon { width: auto; height: auto; background: none; font-size: 16px; }
+  .day-card__weather .weather__temp { font-size: 13px; }
+  .day-card__weather .weather__note { font-size: 10.5px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__sun" aria-hidden="true">☀️</div>
+  <a class="hero__back" href="../index.html">← 回旅行地圖首頁</a>
+  <p class="hero__eyebrow">2026 年度行程</p>
+  <h1 class="hero__title display">沖繩親子自由行</h1>
+  <p class="hero__date">2026/10/20（二）－ 10/25（日）・6天5夜</p>
+</header>
+
+<main class="container page-body">
+
+  <h2 class="section-title">✈️ 班機資訊</h2>
+  <div class="info-grid" id="flight-grid"></div>
+
+  <h2 class="section-title">🏨 住宿資訊</h2>
+  <div class="info-grid" id="hotel-grid"></div>
+
+  <h2 class="section-title">🗺️ 全行程地圖</h2>
+  <p class="section-note">點下方圖例可切換顯示／隱藏每一天的路線。</p>
+  <div class="map-panel">
+    <div class="map-panel__title">六天路線總覽</div>
+    <div class="map-panel__canvas" id="overview-map" style="height:340px;"></div>
+    <div class="map-panel__legend" id="overview-legend"></div>
+  </div>
+
+  <h2 class="section-title">📅 逐日行程</h2>
+  <div class="day-grid" id="day-grid"></div>
+
+  <h2 class="section-title">🎒 行前準備</h2>
+  <div class="day-grid" style="grid-template-columns:1fr;">
+    <a class="day-card" href="packing.html" style="max-width:360px;">
+      <div class="day-card__num">🧳</div>
+      <div class="day-card__title">打包清單</div>
+      <div class="day-card__desc">出發前對照打勾，不漏東漏西</div>
+      <div class="day-card__link">前往清單 →</div>
+    </a>
+  </div>
+
+  <footer class="site-footer">ShihChia 的旅行地圖 · 沖繩親子自由行 2026</footer>
+
+</main>
+
+<script src="script.js"></script>
+<script src="data/itinerary.js"></script>
+<script>
+  const trip = window.TRIP;
+
+  // ---------- 班機卡 ----------
+  const flightGrid = document.getElementById("flight-grid");
+  trip.flights.forEach((f) => {
+    const card = document.createElement("div");
+    card.className = "info-card is-open";
+    card.innerHTML = `
+      <div class="info-card__head">
+        <div>
+          <div class="info-card__head-title">${f.dir}・${f.carrier} ${f.flightNo}</div>
+          <div class="info-card__head-sub">${f.date}　${f.from.split(" ")[0]} ${f.depart} → ${f.to.split(" ")[0]} ${f.arrive}</div>
+        </div>
+        <div class="info-card__toggle">▾</div>
+      </div>
+      <div class="info-card__detail">
+        <div class="info-card__detail-inner">
+          <div><strong>機型：</strong>${f.aircraft}</div>
+          <div><strong>起飛：</strong>${f.from}　${f.depart}</div>
+          <div><strong>抵達：</strong>${f.to}　${f.arrive}</div>
+          <div><strong>行李：</strong>${f.baggage}</div>
+          <div><strong>提醒：</strong>${f.note}</div>
+          <div><a href="${f.website}" target="_blank" rel="noopener">前往航空公司官網 →</a></div>
+        </div>
+      </div>
+    `;
+    flightGrid.appendChild(card);
+  });
+
+  // ---------- 飯店卡 ----------
+  const hotelGrid = document.getElementById("hotel-grid");
+  trip.hotels.forEach((h) => {
+    const card = document.createElement("div");
+    card.className = "info-card is-open";
+    card.innerHTML = `
+      <div class="info-card__head">
+        <div>
+          <div class="info-card__head-title">${h.name}</div>
+          <div class="info-card__head-sub">${h.area}　${h.checkIn} → ${h.checkOut}（${h.nights}）</div>
+        </div>
+        <div class="info-card__toggle">▾</div>
+      </div>
+      <div class="info-card__detail">
+        <div class="info-card__detail-inner">
+          <div><strong>房型：</strong>${h.room}</div>
+          <div><strong>設施：</strong>${h.features}</div>
+          <div><a href="${h.website}" target="_blank" rel="noopener">飯店官網 →</a>　<a href="${h.mapUrl}" target="_blank" rel="noopener">Google 地圖 →</a>${h.hasDetail ? `　<a href="${h.detailUrl}">查看設施／餐廳詳情 →</a>` : ""}</div>
+        </div>
+      </div>
+    `;
+    hotelGrid.appendChild(card);
+  });
+
+  // ---------- 逐日卡片 ----------
+  const dayGrid = document.getElementById("day-grid");
+  trip.days.forEach((day) => {
+    const color = window.DAY_COLORS[day.day] || "#FF6B4A";
+    const isReady = day.ready;
+    const card = document.createElement(isReady ? "a" : "div");
+    card.className = "day-card" + (isReady ? "" : " is-pending");
+    if (isReady) card.href = `day${day.day}.html`;
+    const weatherId = `w-day${day.day}`;
+    card.innerHTML = `
+      <div class="day-card__num" style="color:${color};">Day ${day.day}</div>
+      <div class="day-card__date">${day.dateLabel}（${day.weekday}）</div>
+      <div class="day-card__title">${day.title}</div>
+      <div class="day-card__desc">${day.desc}</div>
+      <div class="day-card__weather" id="${weatherId}"></div>
+      <div class="day-card__link">${isReady ? "查看完整行程 →" : "規劃中，敬請期待"}</div>
+    `;
+    dayGrid.appendChild(card);
+    loadWeather(weatherId, day.weatherAnchor.lat, day.weatherAnchor.lon, day.date);
+  });
+
+  // ---------- 全行程地圖 ----------
+  initOverviewMap("overview-map", "overview-legend", trip);
+</script>
+
+</body>
+</html>
