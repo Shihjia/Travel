@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採買推薦 － 沖繩親子自由行</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="hero hero--compact">
+  <div class="hero__sun" aria-hidden="true">🛍️</div>
+  <a class="hero__back" href="index.html">← 回行程總覽</a>
+  <p class="hero__eyebrow">行前準備</p>
+  <h1 class="hero__title display" style="font-size:26px; margin-top:6px;">採買推薦</h1>
+  <p class="hero__date" style="font-weight:700;">推薦商品與對應的購買地點</p>
+</header>
+
+<main class="container page-body">
+
+  <div class="card" style="padding:16px 18px; margin-bottom:6px;">
+    <div style="font-size:14px; color:var(--ink-muted); font-weight:700; margin-bottom:8px;">依天數篩選</div>
+    <div class="day-filter" id="day-filter"></div>
+    <p class="section-note" style="margin:10px 0 0; font-size:13.5px;">
+      點選天數只顯示那一天買得到的商品，方便現場對照。商品照片多數尚未拍攝，出發後拍到再替換。
+    </p>
+  </div>
+
+  <div id="shopping-body"></div>
+
+  <h2 class="section-title">📌 購物提醒</h2>
+  <div class="card" style="padding:16px 18px;">
+    <ul id="shopping-notes" style="margin:0; padding-left:20px; font-size:15px; color:var(--ink-muted); line-height:1.75;"></ul>
+  </div>
+
+  <footer class="site-footer">ShihChia 的旅行地圖 · 沖繩親子自由行 2026</footer>
+
+</main>
+
+<script src="script.js"></script>
+<script src="data/itinerary.js"></script>
+<script>
+  const trip = window.TRIP;
+  const list = Array.isArray(trip.shoppingList) ? trip.shoppingList : [];
+
+  /* 佔位圖配色：讓四個分類各自帶不同色，直接沿用既有的每日代表色盤 */
+  const CATEGORY_COLOR_KEY = [1, 4, 2, 3];
+
+  /* ---------- 「哪裡買」chip：Day{N} 開頭的用該天代表色 ---------- */
+  function whereChips(where) {
+    return (where || "").split("／").map((place) => {
+      const p = place.trim();
+      if (!p) return "";
+      const m = p.match(/^Day(\d)/);
+      if (!m) return `<span class="chip chip--where">${escapeHtml(p)}</span>`;
+      const color = window.DAY_COLORS[Number(m[1])] || "#FF6B4A";
+      return `<span class="chip chip--where" style="background:${color}1F; border-color:${color};">${escapeHtml(p)}</span>`;
+    }).join("");
+  }
+
+  function daysOf(where) {
+    return (where.match(/Day(\d)/g) || []).map((s) => s.replace("Day", ""));
+  }
+
+  /* ---------- 渲染商品 ---------- */
+  const body = document.getElementById("shopping-body");
+  body.innerHTML = list.map((group, gIdx) => {
+    const colorKey = CATEGORY_COLOR_KEY[gIdx % CATEGORY_COLOR_KEY.length];
+    const cards = (group.items || []).map((item) => `
+      <div class="facility-card" data-days="${daysOf(item.where || "").join(",")}">
+        <div class="facility-card__title">${escapeHtml(item.name)}</div>
+        <div class="facility-card__row">${escapeHtml(item.desc)}</div>
+        ${renderPhoto(item.photo, colorKey)}
+        <div class="facility-card__badges" style="align-items:center; margin-top:8px;">
+          <span style="font-size:13px; font-weight:800; color:var(--ink);">哪裡買：</span>
+          ${whereChips(item.where)}
+        </div>
+      </div>`).join("");
+    return `
+      <section data-category="${escapeHtml(group.category)}">
+        <h2 class="section-title">${group.emoji || ""} ${escapeHtml(group.category)}</h2>
+        <div class="facility-grid">${cards}</div>
+      </section>`;
+  }).join("");
+
+  /* ---------- 購物提醒 ---------- */
+  const notesEl = document.getElementById("shopping-notes");
+  notesEl.innerHTML = (trip.shoppingNotes || [])
+    .map((n) => `<li>${escapeHtml(n)}</li>`).join("");
+
+  /* ---------- 依天數篩選 ---------- */
+  (function initFilter() {
+    const cards = Array.from(body.querySelectorAll(".facility-card"));
+    const sections = Array.from(body.querySelectorAll("section"));
+
+    // 天數選項直接從資料推出來，之後商品異動不用改這裡
+    const days = Array.from(new Set(cards.flatMap((c) => c.dataset.days.split(",").filter(Boolean))))
+      .sort((a, b) => a - b);
+
+    const filterEl = document.getElementById("day-filter");
+    filterEl.innerHTML = [{ v: "all", label: "全部" }]
+      .concat(days.map((d) => ({ v: d, label: "Day" + d })))
+      .map((o) => {
+        const color = o.v === "all" ? null : window.DAY_COLORS[Number(o.v)];
+        return `<button type="button" class="chip chip--filter" data-day="${o.v}"
+                  ${color ? `style="border-color:${color};"` : ""}>${o.label}</button>`;
+      }).join("");
+
+    const buttons = Array.from(filterEl.querySelectorAll("button"));
+
+    function apply(day) {
+      cards.forEach((c) => {
+        const match = day === "all" || c.dataset.days.split(",").includes(day);
+        c.style.display = match ? "" : "none";
+      });
+      // 整個分類都被篩掉時連標題一起收起來，才不會留下空標題
+      sections.forEach((s) => {
+        const visible = Array.from(s.querySelectorAll(".facility-card"))
+          .some((c) => c.style.display !== "none");
+        s.style.display = visible ? "" : "none";
+      });
+      buttons.forEach((b) => b.classList.toggle("is-active", b.dataset.day === day));
+    }
+
+    filterEl.addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-day]");
+      if (btn) apply(btn.dataset.day);
+    });
+
+    apply("all");
+  })();
+</script>
+
+</body>
+</html>

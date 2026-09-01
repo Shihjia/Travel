@@ -703,5 +703,279 @@ window.TRIP = {
         "萬用夾鏈袋（裝濕衣物／收據）"
       ]
     }
+  ],
+
+  shoppingList: [
+    {
+      category: "藥妝與保健",
+      emoji: "💊",
+      items: [
+        {
+          name: "休足時間（足貼）",
+          desc: "走一整天路後睡前貼，隔天腳沒那麼痠。帶小孩走行程很需要。",
+          where: "Day2 唐吉訶德名護店／Day4 AEON MALL（BIC CAMERA 3F）／Day4 國際通藥妝店",
+          photo: { placeholder: true, emoji: "💊", alt: "休足時間（足貼）（照片待補）" }
+        },
+        {
+          name: "EVE 止痛藥",
+          desc: "日本經典止痛藥，台灣旅客回購率很高，家庭常備。",
+          where: "Day2 唐吉訶德名護店／Day4 國際通藥妝店",
+          photo: { placeholder: true, emoji: "💊", alt: "EVE 止痛藥（照片待補）" }
+        },
+        {
+          name: "合利他命 EX PLUS",
+          desc: "維生素B群保健品，日本熱銷款，送長輩很合適。",
+          where: "Day2 唐吉訶德名護店／Day4 AEON MALL、國際通藥妝店",
+          photo: { placeholder: true, emoji: "💊", alt: "合利他命 EX PLUS（照片待補）" }
+        },
+        {
+          name: "花王 蒸氣眼罩",
+          desc: "溫熱敷眼罩，多種香味可選，回國後自用或送人都好。",
+          where: "Day2 唐吉訶德名護店／Day4 國際通藥妝店",
+          photo: { placeholder: true, emoji: "💊", alt: "花王 蒸氣眼罩（照片待補）" }
+        },
+        {
+          name: "參天 FX 眼藥水",
+          desc: "清涼感明顯，緩解眼睛疲勞的經典款。",
+          where: "Day4 國際通藥妝店／Day2 唐吉訶德名護店",
+          photo: { placeholder: true, emoji: "💊", alt: "參天 FX 眼藥水（照片待補）" }
+        },
+        {
+          name: "LuLuLun 面膜（沖繩限定）",
+          desc: "含香檬、苦瓜、蘆薈、月桃等沖繩在地植萃，只有沖繩買得到的限定款。",
+          where: "Day2 唐吉訶德名護店／Day4 國際通藥妝店",
+          photo: { placeholder: true, emoji: "💊", alt: "LuLuLun 面膜（沖繩限定）（照片待補）" }
+        },
+        {
+          name: "安耐曬（沖繩限定包裝）",
+          desc: "高係數防曬、防水抗汗，限定包裝有收藏感；Day2、Day3 戲水也用得到。",
+          where: "Day2 唐吉訶德名護店／Day4 AEON MALL",
+          photo: { placeholder: true, emoji: "💊", alt: "安耐曬（沖繩限定包裝）（照片待補）" }
+        },
+        {
+          name: "首里石鹼 SuiSavon 手工皂／護手霜",
+          desc: "沖繩在地品牌，用月桃、洛神花等天然植物成分，包裝好看、送禮體面。",
+          where: "Day4 AEON MALL沖縄ライカム",
+          photo: { placeholder: true, emoji: "💊", alt: "首里石鹼 SuiSavon 手工皂／護手霜（照片待補）" }
+        }
+      ]
+    },
+    {
+      category: "零食伴手禮",
+      emoji: "🍪",
+      items: [
+        {
+          name: "御菓子御殿 紅芋塔",
+          desc: "100% 沖繩紫心地瓜內餡配酥軟塔皮，沖繩最經典的伴手禮，分送同事的安全牌。",
+          where: "Day4 國際通／Day6 IIAS、那霸機場／Day2 唐吉訶德名護店",
+          photo: { placeholder: true, emoji: "🍪", alt: "御菓子御殿 紅芋塔（照片待補）" }
+        },
+        {
+          name: "南風堂 雪鹽金楚糕",
+          desc: "宮古島雪鹽融入傳統琉球點心金楚糕，鹹甜層次很有記憶點。",
+          where: "Day4 國際通／Day6 那霸機場",
+          photo: {
+            src: "images/shop-chinsuko.jpg",
+            alt: "那霸店家貨架上成排的金楚糕盒裝伴手禮",
+            credit: { author: "Yuet Man Lee", license: "CC BY-SA 4.0", sourceUrl: "https://commons.wikimedia.org/wiki/File:Chinsuk%C5%8D_for_sale_in_Naha,_Okinawa.jpg" }
+          }
+        },
+        {
+          name: "雪鹽夾心餅乾",
+          desc: "宮古島雪鹽搭空氣感巧克力夾心，鹹甜酥脆很涮嘴。",
+          where: "Day4 國際通／Day6 那霸機場",
+          photo: { placeholder: true, emoji: "🍪", alt: "雪鹽夾心餅乾（照片待補）" }
+        },
+        {
+          name: "KitKat 沖繩限定紅芋口味",
+          desc: "紅芋粉末配白巧克力，沖繩限定、台灣買不到，適合分小包送人。",
+          where: "Day2 唐吉訶德名護店／Day6 那霸機場",
+          photo: { placeholder: true, emoji: "🍪", alt: "KitKat 沖繩限定紅芋口味（照片待補）" }
+        },
+        {
+          name: "ROYCE' 石垣島海鹽巧克力洋芋片",
+          desc: "洋芋片裹巧克力再撒石垣島海鹽，甜鹹交錯。屬冷藏／怕熱商品，建議接近回程再買。",
+          where: "Day5 PARCO CITY／Day6 IIAS、那霸機場",
+          photo: { placeholder: true, emoji: "🍪", alt: "ROYCE' 石垣島海鹽巧克力洋芋片（照片待補）" }
+        },
+        {
+          name: "Calbee+ 黑糖三色薯塊",
+          desc: "紫薯、黃薯、白薯三色加沖繩黑糖調味，國際通門市有現做的。",
+          where: "Day4 國際通",
+          photo: { placeholder: true, emoji: "🍪", alt: "Calbee+ 黑糖三色薯塊（照片待補）" }
+        },
+        {
+          name: "沖繩黑糖／黑糖糖果",
+          desc: "平價又好分送，超市就買得到，重量輕、不怕壓。",
+          where: "Day1 MaxValu讀谷店／Day4 AEON STYLE 超市",
+          photo: { placeholder: true, emoji: "🍪", alt: "沖繩黑糖／黑糖糖果（照片待補）" }
+        },
+        {
+          name: "風獅爺造型餅乾",
+          desc: "造型可愛、口味有多種組合，小孩會喜歡，也適合送小朋友。",
+          where: "Day4 國際通商店街",
+          photo: { placeholder: true, emoji: "🍪", alt: "風獅爺造型餅乾（照片待補）" }
+        },
+        {
+          name: "Orion 啤酒（含沖繩水果口味）",
+          desc: "沖繩在地啤酒，另有鳳梨、檸檬等水果口味。酒類要託運，注意台灣入境限量。",
+          where: "Day1 MaxValu讀谷店／Day2 唐吉訶德名護店／Day6 那霸機場",
+          photo: { placeholder: true, emoji: "🍪", alt: "Orion 啤酒（含沖繩水果口味）（照片待補）" }
+        },
+        {
+          name: "沖繩麵（生麵／乾麵組）",
+          desc: "豬骨或雞骨結合柴魚湯底的沖繩鄉土料理，帶回家自己煮很有旅行延續感。",
+          where: "Day4 牧志公設市場／Day1 MaxValu讀谷店",
+          photo: {
+            src: "images/shop-okinawa-soba.jpg",
+            alt: "一碗附三層肉、魚板與紅薑的沖繩麵",
+            credit: { author: "pelican from Tokyo, Japan", license: "CC BY-SA 2.0", sourceUrl: "https://commons.wikimedia.org/wiki/File:Okinawa_soba_noodle_(42195524970).jpg" }
+          }
+        }
+      ]
+    },
+    {
+      category: "兒童用品玩具",
+      emoji: "🧸",
+      items: [
+        {
+          name: "寶可夢中心 沖繩限定周邊",
+          desc: "沖繩限定皮卡丘商品，空間寬敞、不需要抽整理券就能進去逛。Day4 在 AEON MALL 有 4.5 小時，時間很夠。",
+          where: "Day4 AEON MALL沖縄ライカム 4F",
+          photo: { placeholder: true, emoji: "🧸", alt: "寶可夢中心 沖繩限定周邊（照片待補）" }
+        },
+        {
+          name: "三麗鷗專賣店（Sanrio）",
+          desc: "Hello Kitty、美樂蒂等角色商品專賣。",
+          where: "Day4 AEON MALL沖縄ライカム 4F",
+          photo: { placeholder: true, emoji: "🧸", alt: "三麗鷗專賣店（Sanrio）（照片待補）" }
+        },
+        {
+          name: "吉卜力 橡子共和國",
+          desc: "龍貓、魔女宅急便等吉卜力周邊。",
+          where: "Day4 AEON MALL沖縄ライカム 4F",
+          photo: { placeholder: true, emoji: "🧸", alt: "吉卜力 橡子共和國（照片待補）" }
+        },
+        {
+          name: "蠟筆小新專賣店",
+          desc: "蠟筆小新角色周邊，日本限定款式多。",
+          where: "Day4 AEON MALL沖縄ライカム 4F",
+          photo: { placeholder: true, emoji: "🧸", alt: "蠟筆小新專賣店（照片待補）" }
+        },
+        {
+          name: "曬黑款 Hello Kitty（日燒Kitty）",
+          desc: "沖繩限定的曬黑造型 Kitty，吊飾、娃娃、T恤都有，是很有辨識度的沖繩紀念品。",
+          where: "Day4 國際通／Day2 唐吉訶德名護店",
+          photo: { placeholder: true, emoji: "🧸", alt: "曬黑款 Hello Kitty（日燒Kitty）（照片待補）" }
+        },
+        {
+          name: "AEON STYLE 4F 婦嬰童裝玩具區",
+          desc: "童裝、玩具、婦嬰用品集中在同一層，一次逛完最省力。",
+          where: "Day4 AEON MALL沖縄ライカム 4F",
+          photo: { placeholder: true, emoji: "🧸", alt: "AEON STYLE 4F 婦嬰童裝玩具區（照片待補）" }
+        },
+        {
+          name: "3COINS+plus 兒童小物",
+          desc: "平價生活雜貨，兒童餐具、收納、小玩具都很好逛，大多 300 日圓起。",
+          where: "Day4 AEON MALL沖縄ライカム 2-3F／Day5 PARCO CITY",
+          photo: { placeholder: true, emoji: "🧸", alt: "3COINS+plus 兒童小物（照片待補）" }
+        },
+        {
+          name: "UNIQLO／GU 童裝",
+          desc: "日本本地價格通常比台灣便宜，10 月的沖繩還熱，可以挑回台灣秋冬穿的。",
+          where: "Day4 AEON MALL沖縄ライカム／Day5 PARCO CITY",
+          photo: { placeholder: true, emoji: "🧸", alt: "UNIQLO／GU 童裝（照片待補）" }
+        },
+        {
+          name: "美麗海水族館 鯨鯊周邊",
+          desc: "鯨鯊玩偶、筆袋、紀念T恤等，只有水族館館內買得到，是 Day2 專屬的紀念品。",
+          where: "Day2 沖繩美麗海水族館",
+          photo: { placeholder: true, emoji: "🧸", alt: "美麗海水族館 鯨鯊周邊（照片待補）" }
+        }
+      ]
+    },
+    {
+      category: "沖繩在地特產",
+      emoji: "🐟",
+      items: [
+        {
+          name: "宮古島雪鹽",
+          desc: "礦物質含量高的細粉狀海鹽，可以入菜，也可以撒水果或冰淇淋上吃。",
+          where: "Day4 國際通（塩屋）／Day6 那霸機場",
+          photo: { placeholder: true, emoji: "🐟", alt: "宮古島雪鹽（照片待補）" }
+        },
+        {
+          name: "塩屋 調味鹽",
+          desc: "日本最大的鹽專賣店，超過 60 種調味鹽可以現場試吃再挑，很適合買來送愛下廚的朋友。",
+          where: "Day4 國際通",
+          photo: { placeholder: true, emoji: "🐟", alt: "塩屋 調味鹽（照片待補）" }
+        },
+        {
+          name: "邊銀食堂 石垣島辣油",
+          desc: "石垣島辣椒、薑黃、大蒜製成，香氣濃郁但不會死辣，很多人一次帶好幾瓶。",
+          where: "Day4 國際通、牧志公設市場",
+          photo: { placeholder: true, emoji: "🐟", alt: "邊銀食堂 石垣島辣油（照片待補）" }
+        },
+        {
+          name: "泡盛",
+          desc: "日本歷史最悠久的蒸餾酒，酒精濃度約 30 度。有小瓶裝可以買來試。酒類必須託運，注意台灣入境限量 1 公升。",
+          where: "Day4 牧志公設市場／Day2 唐吉訶德名護店／Day6 那霸機場",
+          photo: {
+            src: "images/shop-awamori.jpg",
+            alt: "沖繩居酒屋吧台前一整排的泡盛酒瓶",
+            credit: { author: "pcs34560", license: "Public domain", sourceUrl: "https://commons.wikimedia.org/wiki/File:%E4%B8%80%E5%A0%82%E3%81%AB%E4%BC%9A%E3%81%97%E3%81%9F%E3%80%81%E6%B2%96%E7%B8%84%E7%84%BC%E9%85%8E_Pcs34560_IMG9867.jpg" }
+          }
+        },
+        {
+          name: "琉球玻璃",
+          desc: "手工吹製、每件花色都獨一無二的沖繩玻璃工藝。易碎，記得請店家包好並放行李箱中央。",
+          where: "Day5 沖繩世界（王國村可看師傅現場製作）／Day4 AEON MALL",
+          photo: {
+            src: "images/shop-ryukyu-glass.jpg",
+            alt: "藍色紋路的手工吹製琉球玻璃杯",
+            credit: { author: "yawning hunter", license: "CC BY 2.0", sourceUrl: "https://commons.wikimedia.org/wiki/File:Ryukyu_Glass_1.jpg" }
+          }
+        },
+        {
+          name: "やちむん 陶器（壺屋燒）",
+          desc: "沖繩在地陶器，樸實厚實的手感，杯盤類最實用。牧志公設市場旁的壺屋通就是陶器街。",
+          where: "Day4 牧志公設市場周邊壺屋通",
+          photo: { placeholder: true, emoji: "🐟", alt: "やちむん 陶器（壺屋燒）（照片待補）" }
+        },
+        {
+          name: "風獅爺（シーサー）擺飾",
+          desc: "沖繩守護神，傳統上兩隻一組（一隻張嘴招福、一隻閉嘴避邪），從鑰匙圈到大擺飾都有。",
+          where: "Day5 沖繩世界／Day4 國際通、AEON MALL",
+          photo: {
+            src: "images/shop-shisa.jpg",
+            alt: "那霸國際通街邊的石雕風獅爺",
+            credit: { author: "NORTLAUKAU 26088 JP", license: "CC0", sourceUrl: "https://commons.wikimedia.org/wiki/File:JP_%E6%B2%96%E7%B9%A9_Okinawa_%E9%82%A3%E9%9C%B8%E5%B8%82_Naha_City_%E5%9C%8B%E9%9A%9B%E9%80%9A_Kokusai-dori_n_%E5%AE%89%E9%87%8C_Asato_Shisa_stone_lion_statue_February_2026_N13P_28.jpg" }
+          }
+        },
+        {
+          name: "沖繩海帶芽／海蘊（もずく）",
+          desc: "沖繩特產海藻，乾燥包裝好攜帶，回家煮湯很方便。",
+          where: "Day1 MaxValu讀谷店／Day4 AEON STYLE 超市",
+          photo: { placeholder: true, emoji: "🐟", alt: "沖繩海帶芽／海蘊（もずく）（照片待補）" }
+        },
+        {
+          name: "35 COFFEE",
+          desc: "用白化珊瑚焙煎咖啡豆、部分營收回饋珊瑚保育的沖繩品牌，包裝質感好，適合送咖啡愛好者。",
+          where: "Day4 國際通／Day6 那霸機場",
+          photo: { placeholder: true, emoji: "🐟", alt: "35 COFFEE（照片待補）" }
+        }
+      ]
+    }
+  ],
+
+  shoppingNotes: [
+    "退稅門檻：同一店家、同一天、未稅金額滿 5,000 日圓可辦免稅，記得帶護照（Visit Japan Web 也可產生免稅 QR code）。",
+    "藥妝零食等「消耗品」退稅後會被封進透明袋，回台灣前不能拆封使用。",
+    "台灣入境限制：酒類 1 公升、菸品有限量；生鮮蔬果與肉類製品不能帶回台灣。",
+    "液體、膏狀、刀具類（含泡盛、辣油、雪鹽）一律託運，不要放手提行李。",
+    "Day4 在 AEON MALL 有約 4.5 小時、Day5 在 PARCO CITY 有約 6.3 小時，是全程最大的兩個採買時段，主力建議放這兩天。",
+    "Day6 的 IIAS 沖繩豐崎與那霸機場是最後補貨機會，但時間較趕（10:30-13:00 + 機場），別把重要的東西留到這時候。",
+    "AEON MALL 建議一到就先去服務台索取折扣券；唐吉訶德的優惠券也可以出發前先上網查好。",
+    "怕熱、怕融化的商品（ROYCE' 巧克力洋芋片等）建議接近回程再買，或請店家加保冷劑。"
   ]
 };
