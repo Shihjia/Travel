@@ -124,8 +124,11 @@ function initDayMap(containerId, day) {
 }
 
 /**
- * 產生地點照片區塊 HTML(實照或 CSS 佔位圖)
- * 實照一律附上 Commons 授權標示；佔位圖用該天代表色的漸層＋emoji。
+ * 產生地點照片區塊 HTML,三種形態:
+ *   1. 實照      - 附 Commons 授權標示「照片：作者 / 授權」
+ *   2. 示意插圖  - photo.illustration === true,附「示意插圖」標籤
+ *                 (畫的是同類型場所而非該店實景,一定要標示)
+ *   3. 佔位圖    - photo.placeholder === true,該天代表色的漸層＋emoji
  * @param {object} photo - item.photo
  * @param {number} dayNum - 第幾天(決定佔位圖配色)
  */
@@ -144,15 +147,19 @@ function renderPhoto(photo, dayNum) {
   }
 
   const c = photo.credit || {};
-  const creditHtml = (c.author && c.license && c.sourceUrl)
-    ? `<a class="stop-photo__credit" href="${c.sourceUrl}" target="_blank" rel="noopener">照片：${escapeHtml(c.author)} / ${escapeHtml(c.license)}</a>`
-    : "";
+  let noteHtml = "";
+  if (photo.illustration) {
+    // 示意插圖：畫的是同類型場所，不是該地點的實際照片，必須標示清楚
+    noteHtml = `<span class="stop-photo__credit stop-photo__tag">示意插圖</span>`;
+  } else if (c.author && c.license && c.sourceUrl) {
+    noteHtml = `<a class="stop-photo__credit" href="${c.sourceUrl}" target="_blank" rel="noopener">照片：${escapeHtml(c.author)} / ${escapeHtml(c.license)}</a>`;
+  }
 
   return `
     <figure class="stop-photo">
       <img src="${photo.src}" alt="${escapeHtml(photo.alt || "")}"
            width="1200" height="675" loading="lazy" decoding="async">
-      ${creditHtml}
+      ${noteHtml}
     </figure>`;
 }
 

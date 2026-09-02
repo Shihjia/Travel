@@ -966,6 +966,14 @@ section.is-collapsed .facility-grid { display: none; }
 
 .stop-photo__credit:hover { color: var(--ink-muted); }
 
+/* 示意插圖標籤：與授權標示同一個位置與尺寸，但不是連結 */
+.stop-photo__tag {
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: var(--ink-muted);
+  cursor: default;
+}
+
 /* 佔位圖：該天代表色的柔和漸層 ＋ 大 emoji ＋「照片待補」
    漸層與框線色由 renderPhoto() 以 inline style 帶入(該天代表色 + 透明度) */
 .stop-photo--placeholder {

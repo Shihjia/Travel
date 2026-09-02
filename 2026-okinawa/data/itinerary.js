@@ -60,7 +60,7 @@ window.TRIP = {
       lat: 26.4850, lon: 127.8250,
       detailUrl: "hotel1.html",
       hasDetail: true,
-      photo: { placeholder: true, emoji: "🏨", alt: "沖繩嘉利吉海灘海洋溫泉度假村（照片待補）" },
+      photo: { src: "images/hotel1.jpg", alt: "海灘度假村的示意插圖：泳池、沙灘與玩沙的小孩", illustration: true },
       intro: "以「森之湯」大展望浴場、多樣海洋活動與六間風格餐廳聞名的度假村，Day3飯店自由日整天都會待在這裡，以下是完整設施、活動與餐廳資訊（2026-09-01已用官網查證）。",
       facilities: [
         {
@@ -205,7 +205,7 @@ window.TRIP = {
       website: "https://en.palmroyal.co.jp/index.php",
       mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%91%E3%83%BC%E3%83%A0%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%ABNAHA%E5%9B%BD%E9%9A%9B%E9%80%9A",
       lat: 26.2141, lon: 127.6893,
-      photo: { placeholder: true, emoji: "🏨", alt: "沖繩國際通那霸棕櫚皇家度假飯店（照片待補）" },
+      photo: { src: "images/hotel2.jpg", alt: "市區飯店的示意插圖：街景、頂樓泳池與夕陽", illustration: true },
       intro: "位於國際通上的都會度假飯店，官網主打「國際通上唯一擁有戶外泳池與樓頂大型公共浴池」的飯店，設施規模比恩納村的度假村小，適合Day4-6在市區逛街購物的兩晚（2026-09-01已用官網查證，內容以英文版官網為主，中文資訊較少，建議入住時再向櫃台確認細節）。",
       facilities: [
         {
@@ -321,7 +321,7 @@ window.TRIP = {
           type: "stop",
           time: "15:30", timeEnd: "16:00",
           title: "BLUE SEAL 北谷デポアイランド店",
-          photo: { placeholder: true, emoji: "🍦", alt: "BLUE SEAL 北谷德波島店（照片待補）" },
+          photo: { src: "images/day1-icecream.jpg", alt: "冰淇淋店的示意插圖：店內櫃檯與冰淇淋", illustration: true },
           sub: "沖繩人氣冰淇淋，美國村必吃甜點",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%96%E3%83%AB%E3%83%BC%E3%82%B7%E3%83%BC%E3%83%AB%E3%83%87%E3%83%9D%E3%82%A2%E3%82%A4%E3%83%A9%E3%83%B3%E3%83%89%E5%BA%97",
           lat: 26.3162, lon: 127.7607
@@ -345,7 +345,7 @@ window.TRIP = {
           type: "stop",
           time: "17:35", timeEnd: "18:10",
           title: "MaxValu 讀谷店",
-          photo: { placeholder: true, emoji: "🛒", alt: "MaxValu 讀谷店（照片待補）" },
+          photo: { src: "images/day1-supermarket.jpg", alt: "超市的示意插圖：生鮮區與便當冷藏櫃", illustration: true },
           sub: "買熟食／便當當晚餐，順便採買",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%9E%E3%83%83%E3%82%AF%E3%82%B9%E3%83%90%E3%83%AA%E3%83%A5%E8%AA%AD%E8%B0%B7%E5%BA%97",
           lat: 26.3945, lon: 127.7280
@@ -355,7 +355,7 @@ window.TRIP = {
           type: "stop", isEnd: true,
           time: "約18:30",
           title: "入住沖繩嘉利吉海灘海洋溫泉度假村",
-          photo: { placeholder: true, emoji: "🏨", alt: "沖繩嘉利吉海灘海洋溫泉度假村（照片待補）" },
+          photo: { src: "images/hotel1.jpg", alt: "海灘度假村的示意插圖：泳池、沙灘與玩沙的小孩", illustration: true },
           sub: "Check-in，晚餐已在MaxValu解決",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
@@ -381,7 +381,7 @@ window.TRIP = {
           type: "stop",
           time: "約10:00",
           title: "沖繩嘉利吉海灘海洋溫泉度假村",
-          photo: { placeholder: true, emoji: "🏨", alt: "沖繩嘉利吉海灘海洋溫泉度假村（照片待補）" },
+          photo: { src: "images/hotel1.jpg", alt: "海灘度假村的示意插圖：泳池、沙灘與玩沙的小孩", illustration: true },
           sub: "飯店早餐，約10:00出發",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
@@ -405,7 +405,7 @@ window.TRIP = {
           type: "stop", highlight: true,
           time: "17:00", timeEnd: "19:00",
           title: "燒肉King 名護店",
-          photo: { placeholder: true, emoji: "🥩", alt: "燒肉King 名護店（照片待補）" },
+          photo: { src: "images/day2-yakiniku.jpg", alt: "燒肉店的示意插圖：桌上的烤爐與牛肉片", illustration: true },
           sub: "吃到飽燒肉，小孩可自由取用喜歡的肉，務必事先訂位（平日17:00-23:00）",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E7%84%BC%E8%82%89%E3%82%AD%E3%83%B3%E3%82%B0%20%E5%90%8D%E8%AD%B7%E5%BA%97",
           lat: 26.5904, lon: 127.9757
@@ -415,7 +415,7 @@ window.TRIP = {
           type: "stop",
           time: "19:00", timeEnd: "19:45",
           title: "MEGA唐吉訶德 名護店",
-          photo: { placeholder: true, emoji: "🛍️", alt: "MEGA唐吉訶德 名護店（照片待補）" },
+          photo: { src: "images/day2-variety-store.jpg", alt: "量販雜貨店的示意插圖：堆滿商品的貨架走道", illustration: true },
           sub: "逛街採買，已取代原本的MAX Valu Nago",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=MEGA%E5%94%90%E5%90%89%E8%A8%B6%E5%BE%B7%20%E5%90%8D%E8%AD%B7%E5%BA%97",
           lat: 26.5919, lon: 127.9722
@@ -425,7 +425,7 @@ window.TRIP = {
           type: "stop", isEnd: true,
           time: "約20:10",
           title: "返回沖繩嘉利吉海灘海洋溫泉度假村",
-          photo: { placeholder: true, emoji: "🏨", alt: "沖繩嘉利吉海灘海洋溫泉度假村（照片待補）" },
+          photo: { src: "images/hotel1.jpg", alt: "海灘度假村的示意插圖：泳池、沙灘與玩沙的小孩", illustration: true },
           sub: "結束一天行程，休息",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
@@ -451,7 +451,7 @@ window.TRIP = {
           type: "stop", highlight: true,
           time: "09:30", timeEnd: "16:00",
           title: "飯店設施＋海洋活動自由選",
-          photo: { placeholder: true, emoji: "🏊", alt: "飯店水上樂園與海洋活動（照片待補）" },
+          photo: { src: "images/day3-marine.jpg", alt: "海洋活動的示意插圖：拖曳圈與玻璃底船", illustration: true },
           sub: "整天在飯店自由活動：免費ワンダールーム兒童遊戲室、かりゆしウォーターランド水上樂園（滿4歲）、チャイルドチューブ兒童拖曳圈（1-6歲限定）、水上摩托車同乘、玻璃底船、ドラゴンボート（需身高100cm以上）等，完整費用／時段／年齡限制請見飯店詳情頁",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250,
@@ -461,7 +461,7 @@ window.TRIP = {
           type: "stop",
           time: "17:00", timeEnd: "19:00",
           title: "飯店晚餐",
-          photo: { placeholder: true, emoji: "🍽️", alt: "飯店晚餐（照片待補）" },
+          photo: { src: "images/day3-dinner.jpg", alt: "泳池畔BBQ晚餐的示意插圖：夕陽與串燈", illustration: true },
           sub: "飯店內餐廳選一間：THE DINING暖琉満菜、BBQガーデンCHI吃到飽、サンセットテラス（季節性）等，餐廳介紹與訂位連結請見飯店詳情頁",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250,
@@ -487,7 +487,7 @@ window.TRIP = {
           type: "stop",
           time: "N/A", timeEnd: "09:30",
           title: "沖繩嘉利吉海灘海洋溫泉度假村",
-          photo: { placeholder: true, emoji: "🏨", alt: "沖繩嘉利吉海灘海洋溫泉度假村（照片待補）" },
+          photo: { src: "images/hotel1.jpg", alt: "海灘度假村的示意插圖：泳池、沙灘與玩沙的小孩", illustration: true },
           sub: "Check-out，帶行李",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
@@ -511,7 +511,7 @@ window.TRIP = {
           type: "stop", isEnd: true,
           time: "15:10", timeEnd: "16:10",
           title: "入住那霸棕櫚皇家度假飯店",
-          photo: { placeholder: true, emoji: "🏨", alt: "那霸棕櫚皇家度假飯店（照片待補）" },
+          photo: { src: "images/hotel2.jpg", alt: "市區飯店的示意插圖：街景、頂樓泳池與夕陽", illustration: true },
           sub: "Check-in飯店2",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%91%E3%83%BC%E3%83%A0%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%ABNAHA%E5%9B%BD%E9%9A%9B%E9%80%9A",
           lat: 26.2141, lon: 127.6893
@@ -550,7 +550,7 @@ window.TRIP = {
           type: "stop",
           time: "N/A", timeEnd: "09:30",
           title: "那霸棕櫚皇家度假飯店",
-          photo: { placeholder: true, emoji: "🏨", alt: "那霸棕櫚皇家度假飯店（照片待補）" },
+          photo: { src: "images/hotel2.jpg", alt: "市區飯店的示意插圖：街景、頂樓泳池與夕陽", illustration: true },
           sub: "飯店早餐後出發（一日來回，仍住飯店2，不用搬行李）",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%91%E3%83%BC%E3%83%A0%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%ABNAHA%E5%9B%BD%E9%9A%9B%E9%80%9A",
           lat: 26.2141, lon: 127.6893
@@ -574,7 +574,7 @@ window.TRIP = {
           type: "stop", isEnd: true,
           time: "13:40", timeEnd: "20:00",
           title: "PARCO City",
-          photo: { placeholder: true, emoji: "🛍️", alt: "沖繩 PARCO CITY（照片待補）" },
+          photo: { src: "images/day5-mall.jpg", alt: "購物中心的示意插圖：中庭電扶梯與天窗", illustration: true },
           sub: "逛街購物用餐。回程可選計程車（約28分／¥2,150）或公車309號（約50分／約¥280-500）",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84PARCO%20CITY",
           lat: 26.1560, lon: 127.6474
@@ -599,7 +599,7 @@ window.TRIP = {
           type: "stop",
           time: "N/A", timeEnd: "10:00",
           title: "那霸棕櫚皇家度假飯店",
-          photo: { placeholder: true, emoji: "🏨", alt: "那霸棕櫚皇家度假飯店（照片待補）" },
+          photo: { src: "images/hotel2.jpg", alt: "市區飯店的示意插圖：街景、頂樓泳池與夕陽", illustration: true },
           sub: "退房，帶行李搭計程車",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%91%E3%83%BC%E3%83%A0%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%ABNAHA%E5%9B%BD%E9%9A%9B%E9%80%9A",
           lat: 26.2141, lon: 127.6893
@@ -609,7 +609,7 @@ window.TRIP = {
           type: "stop", highlight: true,
           time: "10:30", timeEnd: "13:00",
           title: "IIAS沖繩豐崎",
-          photo: { placeholder: true, emoji: "🛍️", alt: "IIAS 沖繩豐崎（照片待補）" },
+          photo: { src: "images/day6-iias.jpg", alt: "購物中心的示意插圖：賣場與大型水族箱", illustration: true },
           sub: "DMM水族館、購物、美食、退稅通通有；行李可寄放1F置物櫃（含冷藏櫃，10:00-21:00當日付費使用），逛街不用隨身帶著",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%83%BC%E3%82%A2%E3%82%B9%E6%B2%96%E7%B8%84%E8%B1%8A%E5%B4%8E",
           lat: 26.1478, lon: 127.6470
