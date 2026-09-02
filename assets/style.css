@@ -79,6 +79,33 @@ img { max-width: 100%; display: block; }
 
 .hero.hero--compact { padding: 26px 22px 40px; }
 
+/* 行程總覽頁專用：插圖背景 ＋ 疊在上面的漸層遮罩（day 頁與其他頁維持純漸層）
+   註：url() 是相對於這支 CSS 檔的位置，不是相對於 HTML */
+.hero--illustrated {
+  background-image:
+    linear-gradient(90deg,
+      rgba(20, 70, 95, 0.70) 0%,
+      rgba(20, 70, 95, 0.58) 30%,
+      rgba(20, 70, 95, 0.18) 60%,
+      rgba(20, 70, 95, 0) 80%),
+    url(../2026-okinawa/images/hero-okinawa.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* 手機會裁掉左右只留中央，四段文字由上到下全落在雲與沙灘等淺色區，
+   斜向漸層照顧不到下半部的標題與日期，改成接近均勻的深色紗、底部再放亮 */
+@media (max-width: 640px) {
+  .hero--illustrated {
+    background-image:
+      linear-gradient(180deg,
+        rgba(20, 70, 95, 0.66) 0%,
+        rgba(20, 70, 95, 0.64) 80%,
+        rgba(20, 70, 95, 0.42) 100%),
+      url(../2026-okinawa/images/hero-okinawa.jpg);
+  }
+}
+
 .hero__sun {
   position: absolute;
   right: -20px;
@@ -421,6 +448,9 @@ img { max-width: 100%; display: block; }
 .trip-card__cover {
   height: 150px;
   background: linear-gradient(135deg, #4FC3D9, var(--sky));
+  background-image: url(../2026-okinawa/images/hero-okinawa.jpg);
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: flex-end;
   padding: 14px;
@@ -537,11 +567,28 @@ img { max-width: 100%; display: block; }
   gap: 6px;
 }
 
+/* 「Day N」與右上角天氣同一列，用掉原本空白的右側，不額外增加卡片高度 */
+.day-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .day-card__num {
   font-family: "Fredoka", sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: var(--coral);
+}
+
+.day-card__weather {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  line-height: 1.2;
+  flex-shrink: 0;
 }
 
 .day-card__date { font-size: 13.5px; color: var(--ink-soft); font-weight: 700; }

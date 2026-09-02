@@ -335,15 +335,23 @@ function weatherIcon(code) {
  * @param {number} lat
  * @param {number} lon
  * @param {string} dateStr - "YYYY-MM-DD"
- * @param {object} [options] - { variant: "badge" } 走 day 頁 hero 右上角的精簡版型；
- *                             省略時維持原本的卡片版型(總覽頁逐日卡片仍用這個)
+ * @param {object} [options] - { variant: "badge" } day 頁 hero 右上角版型；
+ *                             { variant: "mini" }  總覽頁逐日卡片右上角的一行極簡版型；
+ *                             省略時維持最早的卡片版型(保留給其他頁面日後使用)
  */
 async function loadWeather(containerId, lat, lon, dateStr, options) {
   const el = document.getElementById(containerId);
   if (!el) return;
 
-  const isBadge = !!options && options.variant === "badge";
-  const pending = (past) => isBadge ? weatherBadgePendingHtml(past) : weatherPendingHtml(dateStr, past);
+  const variant = (options && options.variant) || "";
+  const isBadge = variant === "badge";
+  const isMini = variant === "mini";
+
+  const pending = (past) => {
+    if (isMini) return weatherMiniPendingHtml(el);
+    if (isBadge) return weatherBadgePendingHtml(past);
+    return weatherPendingHtml(dateStr, past);
+  };
 
   const today = new Date();
   const target = new Date(dateStr + "T00:00:00");
@@ -375,6 +383,15 @@ async function loadWeather(containerId, lat, lon, dateStr, options) {
     const tMin = Math.round(daily.temperature_2m_min[0]);
     const rain = daily.precipitation_probability_max[0];
 
+    if (isMini) {
+      // 一行放完、不折行：🌤️ 24-28° ☔30%
+      el.innerHTML = `<span aria-hidden="true">${weatherIcon(code)} ${tMin}-${tMax}° ☔${rain}%</span>`;
+      const label = `當日預報 ${tMin} 到 ${tMax} 度，降雨機率 ${rain}%`;
+      el.setAttribute("aria-label", label);
+      el.setAttribute("title", label);
+      return;
+    }
+
     if (isBadge) {
       el.innerHTML = `
         <div class="weather-badge__icon" aria-hidden="true">${weatherIcon(code)}</div>
@@ -404,6 +421,18 @@ async function loadWeather(containerId, lat, lon, dateStr, options) {
  * hero 右上角天氣的「還查不到」版型。
  * 刻意用 🗓️ 而不是 ☀️／🌤️，避免被誤看成「當天是晴天」。
  */
+/**
+ * 總覽頁逐日卡片右上角的「還查不到」版型：只有一個 🗓️，不放任何說明文字。
+ * 說明統一放在「📅 逐日行程」標題下方，整區只講一次。
+ */
+function weatherMiniPendingHtml(el) {
+  if (el) {
+    el.setAttribute("aria-label", "天氣預報尚未開放");
+    el.setAttribute("title", "天氣預報尚未開放");
+  }
+  return `<span aria-hidden="true">🗓️</span>`;
+}
+
 function weatherBadgePendingHtml(isPast) {
   const main = isPast ? "已無預報" : "預報未開放";
   const note = isPast ? "此日期已過" : "出發前約 2 週開放查詢";
