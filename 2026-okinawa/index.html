@@ -98,7 +98,11 @@
     card.innerHTML = `
       <div class="info-card__head">
         <div>
-          <div class="info-card__head-title">${f.dir}・${f.carrier} ${f.flightNo}</div>
+          <div class="info-card__head-title">
+            <span>${f.dir}・${f.carrier} ${f.flightNo}</span>
+            <a class="icon-link" href="${f.website}" target="_blank" rel="noopener"
+               title="${f.carrier}官網" aria-label="${f.carrier}官網（開新分頁）">🌐</a>
+          </div>
           <div class="info-card__head-sub">${f.date}　${f.from.split(" ")[0]} ${f.depart} → ${f.to.split(" ")[0]} ${f.arrive}</div>
         </div>
         <div class="info-card__toggle">▾</div>
@@ -110,7 +114,6 @@
           <div><strong>抵達：</strong>${f.to}　${f.arrive}</div>
           <div><strong>行李：</strong>${f.baggage}</div>
           <div><strong>提醒：</strong>${f.note}</div>
-          <div><a href="${f.website}" target="_blank" rel="noopener">前往航空公司官網 →</a></div>
         </div>
       </div>
     `;
@@ -125,16 +128,22 @@
     card.innerHTML = `
       <div class="info-card__head">
         <div>
-          <div class="info-card__head-title">${h.name}</div>
+          <div class="info-card__head-title">
+            <span>${h.name}</span>
+            <a class="icon-link" href="${h.website}" target="_blank" rel="noopener"
+               title="飯店官網" aria-label="${h.name}官網（開新分頁）">🌐</a>
+            <a class="icon-link" href="${h.mapUrl}" target="_blank" rel="noopener"
+               title="Google 地圖" aria-label="在 Google 地圖開啟${h.name}（開新分頁）">📍</a>
+          </div>
           <div class="info-card__head-sub">${h.area}　${h.checkIn} → ${h.checkOut}（${h.nights}）</div>
         </div>
         <div class="info-card__toggle">▾</div>
       </div>
       <div class="info-card__detail">
         <div class="info-card__detail-inner">
+          ${h.hasDetail ? `<div><a class="timeline-link" href="${h.detailUrl}" style="display:inline-block; background:#FFF0EC; border-color:#FFC9BB; color:#E5502E;">查看設施／餐廳詳情 →</a></div>` : ""}
           <div><strong>房型：</strong>${h.room}</div>
-          <div><strong>設施：</strong>${h.features}</div>
-          <div><a href="${h.website}" target="_blank" rel="noopener">飯店官網 →</a>　<a href="${h.mapUrl}" target="_blank" rel="noopener">Google 地圖 →</a>${h.hasDetail ? `　<a href="${h.detailUrl}">查看設施／餐廳詳情 →</a>` : ""}</div>
+          <div><strong>房價包含：</strong>${h.features}</div>
         </div>
       </div>
     `;

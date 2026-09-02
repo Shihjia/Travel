@@ -335,10 +335,15 @@ function weatherIcon(code) {
  * @param {number} lat
  * @param {number} lon
  * @param {string} dateStr - "YYYY-MM-DD"
+ * @param {object} [options] - { variant: "badge" } 走 day 頁 hero 右上角的精簡版型；
+ *                             省略時維持原本的卡片版型(總覽頁逐日卡片仍用這個)
  */
-async function loadWeather(containerId, lat, lon, dateStr) {
+async function loadWeather(containerId, lat, lon, dateStr, options) {
   const el = document.getElementById(containerId);
   if (!el) return;
+
+  const isBadge = !!options && options.variant === "badge";
+  const pending = (past) => isBadge ? weatherBadgePendingHtml(past) : weatherPendingHtml(dateStr, past);
 
   const today = new Date();
   const target = new Date(dateStr + "T00:00:00");
@@ -346,11 +351,11 @@ async function loadWeather(containerId, lat, lon, dateStr) {
 
   // 明顯超出免費預報範圍（通常 16 天內），直接顯示提示，不發請求
   if (diffDays > 16) {
-    el.innerHTML = weatherPendingHtml(dateStr);
+    el.innerHTML = pending(false);
     return;
   }
   if (diffDays < -1) {
-    el.innerHTML = weatherPendingHtml(dateStr, true);
+    el.innerHTML = pending(true);
     return;
   }
 
@@ -362,13 +367,25 @@ async function loadWeather(containerId, lat, lon, dateStr) {
     const data = await res.json();
     const daily = data.daily;
     if (!daily || !daily.time || daily.time.length === 0) {
-      el.innerHTML = weatherPendingHtml(dateStr);
+      el.innerHTML = pending(false);
       return;
     }
     const code = daily.weathercode[0];
     const tMax = Math.round(daily.temperature_2m_max[0]);
     const tMin = Math.round(daily.temperature_2m_min[0]);
     const rain = daily.precipitation_probability_max[0];
+
+    if (isBadge) {
+      el.innerHTML = `
+        <div class="weather-badge__icon" aria-hidden="true">${weatherIcon(code)}</div>
+        <div class="weather-badge__body">
+          <div class="weather-badge__temp">${tMin}° - ${tMax}°</div>
+          <div class="weather-badge__rain">☔ ${rain}%</div>
+        </div>
+      `;
+      el.setAttribute("aria-label", `當日預報 ${tMin} 到 ${tMax} 度，降雨機率 ${rain}%`);
+      return;
+    }
 
     el.innerHTML = `
       <div class="weather__icon" style="font-size:22px;">${weatherIcon(code)}</div>
@@ -379,8 +396,24 @@ async function loadWeather(containerId, lat, lon, dateStr) {
       </div>
     `;
   } catch (err) {
-    el.innerHTML = weatherPendingHtml(dateStr);
+    el.innerHTML = pending(false);
   }
+}
+
+/**
+ * hero 右上角天氣的「還查不到」版型。
+ * 刻意用 🗓️ 而不是 ☀️／🌤️，避免被誤看成「當天是晴天」。
+ */
+function weatherBadgePendingHtml(isPast) {
+  const main = isPast ? "已無預報" : "預報未開放";
+  const note = isPast ? "此日期已過" : "出發前約 2 週開放查詢";
+  return `
+    <div class="weather-badge__icon" aria-hidden="true">🗓️</div>
+    <div class="weather-badge__body">
+      <div class="weather-badge__temp">${main}</div>
+      <div class="weather-badge__note">${note}</div>
+    </div>
+  `;
 }
 
 function weatherPendingHtml(dateStr, isPast) {
@@ -402,7 +435,9 @@ function weatherPendingHtml(dateStr, isPast) {
 
 function initInfoCardToggles() {
   document.querySelectorAll(".info-card__head").forEach((head) => {
-    head.addEventListener("click", () => {
+    head.addEventListener("click", (e) => {
+      // 標題列裡的圖示連結(官網／地圖)不應該順便把卡片收起來
+      if (e.target.closest("a")) return;
       const card = head.closest(".info-card");
       if (card) card.classList.toggle("is-open");
     });
