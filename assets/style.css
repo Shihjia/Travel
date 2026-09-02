@@ -758,6 +758,27 @@ img { max-width: 100%; display: block; }
 
 .facility-card.is-free { border: 2.5px solid var(--sun); box-shadow: var(--shadow-pop) #FFE3A8; }
 
+/* 卡片底部的外部連結列：一到兩個 .timeline-link 膠囊，靠左並排、窄螢幕自動換行 */
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* 手機上要好按：只加大這裡的膠囊，時間軸裡的 .timeline-link 維持原尺寸 */
+.card-links .timeline-link { padding: 7px 12px; }
+
+/* .timeline-link 的主要動作變體：實心珊瑚紅，與白底的次要連結區分開來
+   配色沿用站上既有的「選中狀態」寫法(.chip--filter.is-active / .quick-nav .chip.is-active) */
+.timeline-link--primary {
+  background: var(--coral);
+  border-color: var(--coral-deep);
+  color: #fff;
+}
+
+.timeline-link--primary:hover { background: var(--coral-deep); border-color: var(--coral-deep); color: #fff; }
+
 .chip--pick {
   background: #FFF0EC;
   color: var(--coral-deep);

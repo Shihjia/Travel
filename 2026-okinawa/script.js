@@ -488,33 +488,57 @@ document.addEventListener("DOMContentLoaded", () => {
    飯店詳情頁渲染
    ============================================================ */
 
-function renderFacilityCard(item) {
-  const badgesHtml = (item.badges || []).map((b) => {
+function facilityBadgesHtml(item) {
+  return (item.badges || []).map((b) => {
     const cls = b.tone === "pick" ? "chip chip--pick" : (b.tone === "warn" ? "chip chip--warn" : "chip");
     return `<span class="${cls}">${escapeHtml(b.label)}</span>`;
   }).join("");
-  const rowsHtml = (item.rows || []).map((r) => `<div class="facility-card__row">${r}</div>`).join("");
+}
+
+function facilityRowsHtml(item) {
+  return (item.rows || []).map((r) => `<div class="facility-card__row">${r}</div>`).join("");
+}
+
+/**
+ * 卡片底部的外部連結（官網介紹／線上訂位）
+ * @param {string} url
+ * @param {string} text - 連結文字(不含箭頭)
+ * @param {string} name - 場所名稱,用來組 aria-label
+ * @param {boolean} [primary] - true 時用主要動作樣式(實心珊瑚紅)
+ */
+function cardLinkHtml(url, text, name, primary) {
+  if (!url) return "";
+  const label = `在新分頁開啟「${name}」的${text}`;
+  return `<a class="timeline-link${primary ? " timeline-link--primary" : ""}" href="${escapeHtml(url)}"
+             target="_blank" rel="noopener"
+             title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}">${text} →</a>`;
+}
+
+function renderFacilityCard(item) {
+  // photo 若尚未提供就整段不輸出(插圖是分批補上的)
+  const photoHtml = item.photo ? renderPhoto(item.photo) : "";
+  const linksHtml = cardLinkHtml(item.url, "官網介紹", item.title);
   return `
     <div class="facility-card${item.free ? " is-free" : ""}">
       <div class="facility-card__title">${escapeHtml(item.title)}</div>
-      <div class="facility-card__badges">${badgesHtml}</div>
-      ${rowsHtml}
+      <div class="facility-card__badges">${facilityBadgesHtml(item)}</div>
+      ${facilityRowsHtml(item)}
+      ${photoHtml}
+      ${linksHtml ? `<div class="card-links">${linksHtml}</div>` : ""}
     </div>`;
 }
 
 function renderRestaurantCard(item) {
-  const badgesHtml = (item.badges || []).map((b) => {
-    const cls = b.tone === "pick" ? "chip chip--pick" : (b.tone === "warn" ? "chip chip--warn" : "chip");
-    return `<span class="${cls}">${escapeHtml(b.label)}</span>`;
-  }).join("");
-  const rowsHtml = (item.rows || []).map((r) => `<div class="facility-card__row">${r}</div>`).join("");
+  // 訂位是主要動作(實心),官網介紹是次要動作(白底外框)
+  const linksHtml = cardLinkHtml(item.url, "官網介紹", item.title)
+    + cardLinkHtml(item.bookingUrl, "線上訂位", item.title, true);
   return `
     <div class="facility-card">
       <div class="facility-card__title">${escapeHtml(item.title)}</div>
       <div class="facility-card__row" style="font-weight:800; color:var(--sky-ink);">📍 ${escapeHtml(item.location || "")}</div>
-      <div class="facility-card__badges">${badgesHtml}</div>
-      ${rowsHtml}
-      ${item.bookingUrl ? `<a class="timeline-link" href="${item.bookingUrl}" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px; align-self:flex-start;">線上訂位 →</a>` : ""}
+      <div class="facility-card__badges">${facilityBadgesHtml(item)}</div>
+      ${facilityRowsHtml(item)}
+      ${linksHtml ? `<div class="card-links">${linksHtml}</div>` : ""}
     </div>`;
 }
 

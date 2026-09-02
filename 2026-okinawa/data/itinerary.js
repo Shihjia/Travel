@@ -65,15 +65,18 @@ window.TRIP = {
       facilities: [
         {
           title: "森之湯（大展望風呂／大展望浴場）",
-          badges: [{ label: "大人¥600・小孩¥300／單次", tone: "" }],
+          url: "https://kariyushi-oceanspa.jp/spa/",
+          badges: [{ label: "大人¥600・小學生¥300／單次", tone: "" }],
           rows: [
-            "全天票：大人¥1,000／小孩¥500（可無限次使用至隔日9:00）",
+            "全天票：大人¥1,000／小學生¥500（可無限次使用至隔日9:00）",
+            "未就學兒童由保護者陪同免費（我們家小孩4.5歲適用）",
             "時間：6:00-9:00、13:00-23:00（週三15:00起）",
             "不需預約，無特別年齡限制"
           ]
         },
         {
           title: "ワンダールーム（兒童遊戲室，室內）",
+          url: "https://kariyushi-oceanspa.jp/kids/",
           badges: [{ label: "免費", tone: "pick" }, { label: "07:00-21:00", tone: "" }],
           rows: [
             "木製叢林攀爬架／溜滑梯／球池／家家酒區",
@@ -84,6 +87,7 @@ window.TRIP = {
         },
         {
           title: "かりゆしウォーターランド（水上樂園）",
+          url: "https://kariyushi-beach.co.jp/activities/water_land/",
           badges: [{ label: "大人¥3,300・小孩¥2,750", tone: "" }, { label: "滿4歲以上", tone: "warn" }],
           rows: [
             "10月營業時間9:00-17:00（12:00-13:00安全檢查暫停）",
@@ -93,6 +97,7 @@ window.TRIP = {
         },
         {
           title: "チャイルドチューブ（兒童拖曳圈）",
+          url: "https://kariyushi-beach.co.jp/activities/child_tube/",
           badges: [{ label: "¥4,400／次・約10分", tone: "" }, { label: "1-6歲限定", tone: "pick" }],
           rows: [
             "現場報名，無法預約",
@@ -102,6 +107,7 @@ window.TRIP = {
         },
         {
           title: "ジェットスキー（水上摩托車同乘）",
+          url: "https://kariyushi-beach.co.jp/activities/jet_ski/",
           badges: [{ label: "¥3,300／約10分", tone: "" }, { label: "3歲以上可同乘", tone: "" }],
           rows: [
             "由教練駕駛，定員1名乘客同乘",
@@ -111,6 +117,7 @@ window.TRIP = {
         },
         {
           title: "グラスボート（玻璃底船）",
+          url: "https://kariyushi-beach.co.jp/activities/glass_boat/",
           badges: [{ label: "大人¥2,200・小孩¥1,100", tone: "" }, { label: "約20分", tone: "" }],
           rows: [
             "每小時00分、30分各一班，9:00-16:30",
@@ -120,6 +127,7 @@ window.TRIP = {
         },
         {
           title: "ドラゴンボート（拖曳龍舟）",
+          url: "https://kariyushi-beach.co.jp/activities/dragon_boat/",
           badges: [{ label: "大人¥2,500・小孩¥2,000", tone: "" }, { label: "身高100cm以上", tone: "warn" }],
           rows: [
             "約10分，現場報名，全年開放",
@@ -129,6 +137,7 @@ window.TRIP = {
         },
         {
           title: "海灘用品租借",
+          url: "https://kariyushi-beach.co.jp/rental/",
           badges: [{ label: "躺椅¥1,650／傘¥1,650", tone: "" }],
           rows: [
             "傘椅套組（傘1＋躺椅2）¥3,850／日",
@@ -140,6 +149,7 @@ window.TRIP = {
       restaurants: [
         {
           title: "THE DINING 暖琉満菜",
+          url: "https://kariyushi-oceanspa.jp/restaurant/dining/",
           location: "ウイングタワー1F",
           badges: [{ label: "早／午／晚餐", tone: "" }, { label: "無國界百匯", tone: "pick" }],
           rows: [
@@ -150,16 +160,18 @@ window.TRIP = {
         },
         {
           title: "BBQガーデン CHI",
+          url: "https://kariyushi-oceanspa.jp/restaurant/bbq/",
           location: "ウイングタワーBF",
           badges: [{ label: "僅晚餐", tone: "" }, { label: "BBQ吃到飽", tone: "pick" }],
           rows: [
             "30種嚴選牛肉及新鮮海鮮吃到飽",
             "泳池海景特等席可邊看夕陽邊吃"
           ],
-          bookingUrl: "https://www.tablecheck.com/shops/kariyushi-oceanspa-dining/reserve"
+          bookingUrl: "https://www.tablecheck.com/shops/kariyushi-oceanspa-bbq/reserve"
         },
         {
           title: "やきにく 朝Cho（燒肉 朝Cho）",
+          url: "https://kariyushi-oceanspa.jp/restaurant/cho/",
           location: "ウイングタワー1F",
           badges: [{ label: "僅晚餐", tone: "" }, { label: "⚠️查證時休業中", tone: "warn" }],
           rows: [
@@ -169,22 +181,27 @@ window.TRIP = {
         },
         {
           title: "サンセットテラス（夕陽露臺）",
+          url: "https://kariyushi-oceanspa.jp/restaurant/sunsetterrace/",
           location: "オーシャンタワー1F",
           badges: [{ label: "僅晚餐", tone: "" }, { label: "夏季季節限定", tone: "warn" }],
           rows: [
             "泳池畔全席露天座，度假風輕食",
             "週末有沖繩縣內藝人島唄／Jazz現場演出",
             "10月是否營業需另外向飯店確認"
-          ]
+          ],
+          bookingUrl: "https://www.tablecheck.com/shops/kariyushi-oceanspa-sunsetterrace/reserve"
         },
         {
           title: "バーラウンジ タイラ",
+          url: "https://kariyushi-oceanspa.jp/restaurant/bar_taira/",
           location: "ウイングタワー1F",
           badges: [{ label: "全天", tone: "" }, { label: "調酒／世界名酒", tone: "" }],
-          rows: ["海景第一排，適合大人晚上小酌"]
+          rows: ["海景第一排，適合大人晚上小酌"],
+          bookingUrl: "https://www.tablecheck.com/shops/kariyushi-oceanspa-taira/reserve"
         },
         {
           title: "デリ＆カフェ",
+          url: "https://kariyushi-oceanspa.jp/restaurant/delicafe-menu/",
           location: "ウイングタワー1F（酒吧廊入口旁）",
           badges: [{ label: "11:00-21:30", tone: "" }, { label: "熟食／輕食", tone: "" }],
           rows: ["20多種飯糰／三明治等沖繩食材輕食，可外帶，數量有限售完為止"]
