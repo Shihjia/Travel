@@ -66,6 +66,7 @@ window.TRIP = {
         {
           title: "森之湯（大展望風呂／大展望浴場）",
           url: "https://kariyushi-oceanspa.jp/spa/",
+          photo: { src: "images/hotel1-spa.jpg", alt: "森之湯大展望浴場的示意插圖：木造浴場、落地窗外的森林與海", illustration: true },
           badges: [{ label: "大人¥600・小學生¥300／單次", tone: "" }],
           rows: [
             "全天票：大人¥1,000／小學生¥500（可無限次使用至隔日9:00）",
@@ -77,6 +78,7 @@ window.TRIP = {
         {
           title: "ワンダールーム（兒童遊戲室，室內）",
           url: "https://kariyushi-oceanspa.jp/kids/",
+          photo: { src: "images/hotel1-kidsroom.jpg", alt: "室內兒童遊戲室的示意插圖：木製攀爬架、溜滑梯、球池與家家酒廚房", illustration: true },
           badges: [{ label: "免費", tone: "pick" }, { label: "07:00-21:00", tone: "" }],
           rows: [
             "木製叢林攀爬架／溜滑梯／球池／家家酒區",
@@ -88,6 +90,7 @@ window.TRIP = {
         {
           title: "かりゆしウォーターランド（水上樂園）",
           url: "https://kariyushi-beach.co.jp/activities/water_land/",
+          photo: { src: "images/hotel1-waterland.jpg", alt: "海上水上樂園的示意插圖：充氣滑水道、彈跳床與攀岩牆", illustration: true },
           badges: [{ label: "大人¥3,300・小孩¥2,750", tone: "" }, { label: "滿4歲以上", tone: "warn" }],
           rows: [
             "10月營業時間9:00-17:00（12:00-13:00安全檢查暫停）",
@@ -98,6 +101,7 @@ window.TRIP = {
         {
           title: "チャイルドチューブ（兒童拖曳圈）",
           url: "https://kariyushi-beach.co.jp/activities/child_tube/",
+          photo: { src: "images/hotel1-childtube.jpg", alt: "兒童拖曳圈的示意插圖：大人抱著小孩坐在拖曳圈上，前方小艇牽引", illustration: true },
           badges: [{ label: "¥4,400／次・約10分", tone: "" }, { label: "1-6歲限定", tone: "pick" }],
           rows: [
             "現場報名，無法預約",
@@ -108,6 +112,7 @@ window.TRIP = {
         {
           title: "ジェットスキー（水上摩托車同乘）",
           url: "https://kariyushi-beach.co.jp/activities/jet_ski/",
+          photo: { src: "images/hotel1-jetski.jpg", alt: "水上摩托車同乘的示意插圖：教練載著小孩，兩人戴安全帽穿救生衣", illustration: true },
           badges: [{ label: "¥3,300／約10分", tone: "" }, { label: "3歲以上可同乘", tone: "" }],
           rows: [
             "由教練駕駛，定員1名乘客同乘",
@@ -118,6 +123,7 @@ window.TRIP = {
         {
           title: "グラスボート（玻璃底船）",
           url: "https://kariyushi-beach.co.jp/activities/glass_boat/",
+          photo: { src: "images/hotel1-glassboat.jpg", alt: "玻璃底船的示意插圖：船上一家人與水下觀景窗，窗外是珊瑚與海龜", illustration: true },
           badges: [{ label: "大人¥2,200・小孩¥1,100", tone: "" }, { label: "約20分", tone: "" }],
           rows: [
             "每小時00分、30分各一班，9:00-16:30",
@@ -128,6 +134,7 @@ window.TRIP = {
         {
           title: "ドラゴンボート（拖曳龍舟）",
           url: "https://kariyushi-beach.co.jp/activities/dragon_boat/",
+          photo: { src: "images/hotel1-dragonboat.jpg", alt: "拖曳龍舟的示意插圖：長條充氣船上多人穿救生衣乘坐", illustration: true },
           badges: [{ label: "大人¥2,500・小孩¥2,000", tone: "" }, { label: "身高100cm以上", tone: "warn" }],
           rows: [
             "約10分，現場報名，全年開放",
@@ -138,6 +145,7 @@ window.TRIP = {
         {
           title: "海灘用品租借",
           url: "https://kariyushi-beach.co.jp/rental/",
+          photo: { src: "images/hotel1-rental.jpg", alt: "海灘用品租借的示意插圖：沙灘椅、陽傘與租借小屋", illustration: true },
           badges: [{ label: "躺椅¥1,650／傘¥1,650", tone: "" }],
           rows: [
             "傘椅套組（傘1＋躺椅2）¥3,850／日",
