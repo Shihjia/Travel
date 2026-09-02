@@ -69,15 +69,16 @@ img { max-width: 100%; display: block; }
 
 /* ---------- 頁首 hero ---------- */
 
+/* 水平內距與 .container 一致（20px），讓 hero 標題左緣與下方卡片左緣切齊 */
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 40px 22px 52px;
+  padding: 40px 20px 52px;
   background: linear-gradient(135deg, var(--sky) 0%, #4FC3D9 55%, var(--sun) 130%);
   color: #fff;
 }
 
-.hero.hero--compact { padding: 26px 22px 40px; }
+.hero.hero--compact { padding: 26px 20px 40px; }
 
 /* 行程總覽頁專用：插圖背景 ＋ 疊在上面的漸層遮罩（day 頁與其他頁維持純漸層）
    註：url() 是相對於這支 CSS 檔的位置，不是相對於 HTML */
@@ -633,7 +634,12 @@ img { max-width: 100%; display: block; }
   margin-bottom: 16px;
 }
 
-.page-body { padding: 22px 0 40px; }
+/* 只設垂直內距：水平留白一律由 .container 的 padding 提供，
+   不要用 padding 簡寫，否則會把 .container 的左右內距覆蓋成 0 */
+.page-body {
+  padding-top: 22px;
+  padding-bottom: 40px;
+}
 
 /* ---------- 每日頁：上一天/下一天導覽 ---------- */
 
