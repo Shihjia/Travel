@@ -26,6 +26,7 @@
     <a class="chip" href="#sec-hotels">🏨 住宿資訊</a>
     <a class="chip" href="#sec-map">🗺️ 行程地圖</a>
     <a class="chip" href="#sec-days">📅 逐日行程</a>
+    <a class="chip" href="#sec-shopping">🛍️ 採買推薦</a>
     <a class="chip" href="#sec-prep">🎒 行前準備</a>
   </div>
 </nav>
@@ -50,19 +51,25 @@
   <p class="section-note">天氣預報約在出發前兩週開放，屆時各日卡片右上角會自動顯示當天的氣溫與降雨機率；現在顯示 🗓️ 是正常的。</p>
   <div class="day-grid" id="day-grid"></div>
 
-  <h2 class="section-title" id="sec-prep">🎒 行前準備</h2>
-  <div class="prep-grid">
-    <a class="day-card" href="packing.html">
-      <div class="day-card__num">🧳</div>
-      <div class="day-card__title">打包清單</div>
-      <div class="day-card__desc">出發前對照打勾，不漏東漏西</div>
-      <div class="day-card__link">前往清單 →</div>
-    </a>
+  <h2 class="section-title" id="sec-shopping">🛍️ 採買推薦</h2>
+  <p class="section-note">推薦商品與對應的購買地點，可依天數篩選，逛街時打開來對照。</p>
+  <div class="entry-grid">
     <a class="day-card" href="shopping.html">
       <div class="day-card__num">🛍️</div>
       <div class="day-card__title">採買推薦</div>
       <div class="day-card__desc">推薦商品與對應的購買地點</div>
       <div class="day-card__link">前往推薦 →</div>
+    </a>
+  </div>
+
+  <h2 class="section-title" id="sec-prep">🎒 行前準備</h2>
+  <p class="section-note">出發前對照打勾，不漏東漏西；勾選狀態會記在這台裝置的瀏覽器裡。</p>
+  <div class="entry-grid">
+    <a class="day-card" href="packing.html">
+      <div class="day-card__num">🧳</div>
+      <div class="day-card__title">打包清單</div>
+      <div class="day-card__desc">出發前對照打勾，不漏東漏西</div>
+      <div class="day-card__link">前往清單 →</div>
     </a>
   </div>
 
@@ -179,7 +186,14 @@
       let current = null;
 
       if (atBottom) {
-        current = sections[sections.length - 1];
+        // 最後兩區都擠在同一屏、標題永遠捲不到導覽列下方，
+        // 所以捲到底時改用「畫面上方 40% 內最後一個標題」來判斷，
+        // 不能直接標最後一區，否則中間那一區永遠不會亮
+        const bottomLine = window.innerHeight * 0.4;
+        sections.forEach((s) => {
+          if (s.el.getBoundingClientRect().top <= bottomLine) current = s;
+        });
+        if (!current) current = sections[sections.length - 1];
       } else {
         sections.forEach((s) => {
           if (s.el.getBoundingClientRect().top <= line) current = s;

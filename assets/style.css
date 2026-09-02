@@ -853,16 +853,15 @@ img { max-width: 100%; display: block; }
   border-color: var(--sun);
 }
 
-/* ---------- 行前準備入口卡（打包清單／採買推薦） ---------- */
+/* ---------- 子頁入口卡（採買推薦／行前準備各一張） ----------
+   兩區各只有一張卡，限制最大寬度避免被拉成整頁寬；兩區共用同一個
+   class，卡片寬度自然一致 */
 
-.prep-grid {
+.entry-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 14px;
-}
-
-@media (min-width: 640px) {
-  .prep-grid { grid-template-columns: 1fr 1fr; }
+  max-width: 360px;
 }
 
 /* ---------- 採買推薦頁 ---------- */
