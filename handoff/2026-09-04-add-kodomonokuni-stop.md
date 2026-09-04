@@ -1,6 +1,6 @@
 # Day4 新增景點：沖繩兒童王國（動物王國，AEON MALL之前）＋ Day4交通改包車
 
-- 狀態：✅ 完成（2026-09-04 Claude Code 實作完畢，待驗收）
+- 狀態：✅ 完成並已驗收（2026-09-04 Claude Code 實作、Claude 實際開站測試通過）
 - 建立日期：2026-09-04（**2026-09-04已修訂一次：原規格是計程車分段方案，因發現動物王國沒有置物櫃、換飯店日需帶行李，已改為包車方案，請以本版為準**）
 - 提出者：Claude（依使用者需求整理）
 
@@ -214,6 +214,20 @@ No text, no letters, no numbers, no logos, no brand names, no signage, no waterm
 
 ## Claude 驗收結果（由 Claude 核對後填寫）
 
-- 逐項驗收標準檢查結果：
-- 需要調整的地方：
-- 資料是否已同步回 itinerary.js／規劃 markdown 主檔：
+- 逐項驗收標準檢查結果（2026-09-04，實際打開 https://shihjia.github.io/Travel/ 現場網站測試，非只看程式碼）：
+  - ✅ 沖繩兒童王國卡片位置在「飯店1退房」與「AEON MALL」之間，時間軸順序正確
+  - ✅ 時間10:15-12:15、sub說明文字（門票/必玩設施/餵食秀時間）與規格逐字一致
+  - ✅ 照片為Commons實照 `day4-kodomonokuni.jpg`：實測 1200×675（16:9）、176KB（<200KB）、`images/`總計4.4MB（<5.5MB上限）；右下角授權標示「照片：Abasaa / Public domain」可點擊，連到 `https://commons.wikimedia.org/wiki/File:Entrance_to_Okinawa_Zoo_%26_Museum.JPG`，`target="_blank" rel="noopener"`
+  - ✅ 「官網介紹 →」（`https://www.okzm.jp/`）與「中文介紹 →」（`https://fullfenblog.tw/okinawa-zoo/`）皆存在，`target="_blank" rel="noopener"`，網址正確
+  - ✅ 兩段新transport「約44分鐘・35.1公里」「約9分鐘・2.6公里」正確顯示、不含費用
+  - ✅ AEON MALL時間已改12:25-16:20，照片/sub/mapUrl未被動到
+  - ✅ 「AEON MALL→飯店2」transport已改「約39分鐘・21.1公里」，不含費用
+  - ✅ 飯店2 stop時間已改17:00-17:30，sub補上「包車行程至此結束」
+  - ✅ 「平和通→國際通」起始時間已改17:30
+  - ✅ Day4頂層transport已是「4人座包車・8小時（JPY 32,000）」
+  - ✅ Day1的transport欄位確認為「4人座包車・10小時（JPY 34,000）」
+  - ✅ 手機375px（day4.html）`scrollWidth === innerWidth === 375`，無橫向溢出
+  - ✅ day4.html／day1.html Console皆無錯誤
+  - 額外發現並已由Claude直接修正（非Claude Code偏離規格）：`index.html`首頁Day4小卡的`desc`欄位原本沒有同步加入「沖繩兒童王國」，已直接補上「Check-out → 沖繩兒童王國 → AEON MALL沖縄ライカム → Check-in飯店2 → 國際通自由逛街」，現場網站已確認顯示正確
+- 需要調整的地方：無，全部符合驗收標準
+- 資料是否已同步回 itinerary.js／規劃 markdown 主檔：是。itinerary.js已由Claude Code commit並push（commit 98efd65）；`202610日本沖繩/沖繩行程_逐日行程_Day4_1023.md`與`Day1_1020.md`規劃markdown先前已由Claude同步改好對應的包車決定內容
