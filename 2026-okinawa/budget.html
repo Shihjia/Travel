@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>費用試算 － 沖繩親子自由行</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="hero hero--compact">
+  <div class="hero__sun" aria-hidden="true">💰</div>
+  <a class="hero__back" href="index.html">← 回行程總覽</a>
+  <p class="hero__eyebrow">行前準備</p>
+  <h1 class="hero__title display" style="font-size:26px; margin-top:6px;">費用試算</h1>
+  <p class="hero__date" style="font-weight:700;">交通與門票的預估金額，日幣台幣分開列</p>
+</header>
+
+<main class="container page-body">
+
+  <div class="card" style="padding:16px 18px; margin-bottom:6px;">
+    <p class="section-note" id="cost-intro" style="margin:0; font-size:14px;"></p>
+  </div>
+
+  <h2 class="section-title">🚐 包車費用（日幣）</h2>
+  <div class="facility-grid" id="charter-grid"></div>
+  <div id="charter-subtotal"></div>
+
+  <h2 class="section-title">🚕 計程車費用（日幣）</h2>
+  <div class="facility-grid" id="taxi-grid"></div>
+  <div id="taxi-subtotal"></div>
+
+  <div id="transport-total"></div>
+
+  <h2 class="section-title">🎫 景點門票（日幣・現場購票）</h2>
+  <div class="facility-grid" id="tickets-jpy"></div>
+  <div id="tickets-jpy-subtotal"></div>
+
+  <h2 class="section-title">🎟️ 景點門票（台幣・KLOOK 購買）</h2>
+  <p class="section-note">兩個景點的<strong>兒童政策不一樣</strong>，請看各卡片上的標示；台幣金額不與上面的日幣合計。</p>
+  <div class="facility-grid" id="tickets-twd"></div>
+  <div id="tickets-twd-subtotal"></div>
+
+  <h2 class="section-title">ℹ️ 不含在內的費用</h2>
+  <div class="card" style="padding:16px 18px;">
+    <ul id="not-included" style="margin:0; padding-left:20px; font-size:14.5px; color:var(--ink-muted); line-height:1.75;"></ul>
+  </div>
+
+  <footer class="site-footer">ShihChia 的旅行地圖 · 沖繩親子自由行 2026</footer>
+
+</main>
+
+<script src="script.js"></script>
+<script src="data/itinerary.js"></script>
+<script>
+  const trip = window.TRIP;
+  const costs = trip.costs || {};
+
+  /* ---------- 金額格式：兩種幣別各自標示，全程不換算、不互相加總 ---------- */
+  function money(amount, currency) {
+    const n = Number(amount).toLocaleString("en-US");
+    return currency === "TWD" ? "NT$" + n : "JPY " + n;
+  }
+
+  /* 小計列：同一種樣式重複用在各區塊底部，金額右側對齊 */
+  function subtotalHtml(label, amount, currency, note) {
+    return `
+      <div class="card" style="padding:14px 18px; margin-top:14px; display:flex; align-items:center;
+                               justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div style="font-size:15px; font-weight:900; color:var(--ink-strong);">${escapeHtml(label)}</div>
+        <div style="font-size:19px; font-weight:900; color:var(--coral-deep);">${escapeHtml(money(amount, currency))}</div>
+        ${note ? `<div class="facility-card__row" style="flex-basis:100%; margin:0;">${escapeHtml(note)}</div>` : ""}
+      </div>`;
+  }
+
+  function dayChip(day) {
+    const color = window.DAY_COLORS[Number(day)] || "#FF6B4A";
+    return `<span class="chip" style="background:${color}1F; border-color:${color};">Day${day}</span>`;
+  }
+
+  /* ---------- 交通（包車／計程車）：卡片結構兩區共用 ---------- */
+  function transportCardHtml(item) {
+    return `
+      <div class="facility-card">
+        <div class="facility-card__title">${escapeHtml(item.label)}</div>
+        <div class="facility-card__badges">
+          ${dayChip(item.day)}
+          ${item.status === "confirmed" ? `<span class="chip chip--pick">已定案</span>` : ""}
+        </div>
+        <div class="facility-card__row">${escapeHtml(item.detail)}</div>
+        ${item.note ? `<div class="facility-card__row"><strong>⚠️ ${escapeHtml(item.note)}</strong></div>` : ""}
+        <div style="font-size:20px; font-weight:900; color:var(--coral-deep); margin-top:4px;">
+          ${escapeHtml(money(item.amount, item.currency))}
+        </div>
+      </div>`;
+  }
+
+  document.getElementById("cost-intro").textContent = costs.intro || "";
+
+  document.getElementById("charter-grid").innerHTML =
+    (costs.charters || []).map(transportCardHtml).join("");
+  document.getElementById("charter-subtotal").innerHTML =
+    subtotalHtml("包車小計", costs.charterSubtotal, "JPY");
+
+  document.getElementById("taxi-grid").innerHTML =
+    (costs.taxis || []).map(transportCardHtml).join("");
+  document.getElementById("taxi-subtotal").innerHTML =
+    subtotalHtml("計程車小計", costs.taxiSubtotal, "JPY");
+
+  /* 包車與計程車同為日幣，可以合計；下面的台幣門票則不併入 */
+  document.getElementById("transport-total").innerHTML = `
+    <div class="card card--outline" style="padding:16px 18px; margin-top:14px; display:flex; align-items:center;
+                                           justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <div>
+        <div style="font-size:16px; font-weight:900; color:var(--ink-strong);">交通費用合計（已定案）</div>
+        <div class="facility-card__row" style="margin-top:2px;">包車 JPY 66,000 ＋ 計程車 JPY 19,850，同為日幣故可合計</div>
+      </div>
+      <div style="font-size:23px; font-weight:900; color:var(--coral-deep);">
+        ${escapeHtml(money(costs.transportSubtotalConfirmed, "JPY"))}
+      </div>
+    </div>`;
+
+  /* ---------- 門票卡 ----------
+     水族館（小孩免費）與沖繩世界（小孩要付費且金額為估算）刻意用不同樣式：
+     後者整張卡加 .card--outline 外框、用 .chip--warn 警示膠囊，並多一列估算說明，
+     避免兩者被當成同一種兒童政策 */
+  function ticketCardHtml(item) {
+    const childPaid = !!item.childPriceEstimate;
+    const linkHtml = cardLinkHtml(item.url, item.source === "KLOOK" ? "前往KLOOK購買" : "官網票價", item.title, item.source === "KLOOK");
+    return `
+      <div class="facility-card${childPaid ? " card--outline" : ""}">
+        <div class="facility-card__title">${escapeHtml(item.title)}</div>
+        <div class="facility-card__badges">
+          ${dayChip(item.day)}
+          <span class="chip">${escapeHtml(item.source)}</span>
+          ${childPaid
+            ? `<span class="chip chip--warn">⚠️ 小孩需購票</span><span class="chip chip--warn">金額為估算</span>`
+            : `<span class="chip chip--pick">小孩免費</span>`}
+        </div>
+        <div class="facility-card__row">
+          <strong>大人：${escapeHtml(money(item.adultPrice, item.currency))} × ${item.adultCount} 人</strong>
+          ${item.adultPriceRetail ? `（牌價 ${escapeHtml(money(item.adultPriceRetail, item.currency))}）` : ""}
+        </div>
+        <div class="facility-card__row">小孩：${escapeHtml(item.childNote)}</div>
+        ${childPaid ? `
+          <div class="facility-card__row" style="background:#FFF6E4; border:1.5px solid #F0D89B;
+                                                 border-radius:var(--radius-sm); padding:10px 12px; color:#8A6314;">
+            <strong>童票估算金額（台幣）：${escapeHtml(item.childPriceEstimate)}</strong><br>
+            這是<strong>估算值、不是Klook頁面顯示的實際金額</strong>，下單前務必在Klook頁面選定日期後確認實際童票價格。
+          </div>` : ""}
+        <div style="font-size:20px; font-weight:900; color:var(--coral-deep); margin-top:4px;">
+          ${escapeHtml(money(item.subtotal, item.currency))}
+        </div>
+        ${item.subtotalNote ? `<div class="facility-card__row">${escapeHtml(item.subtotalNote)}</div>` : ""}
+        ${item.note ? `<div class="facility-card__row">${escapeHtml(item.note)}</div>` : ""}
+        ${linkHtml ? `<div class="card-links">${linkHtml}</div>` : ""}
+      </div>`;
+  }
+
+  document.getElementById("tickets-jpy").innerHTML =
+    (costs.ticketsJPY || []).map(ticketCardHtml).join("");
+  document.getElementById("tickets-jpy-subtotal").innerHTML =
+    subtotalHtml("門票小計（日幣）", costs.ticketsJPYSubtotal, "JPY");
+
+  document.getElementById("tickets-twd").innerHTML =
+    (costs.ticketsTWD || []).map(ticketCardHtml).join("");
+  document.getElementById("tickets-twd-subtotal").innerHTML = subtotalHtml(
+    "門票小計（台幣・僅計大人）",
+    costs.ticketsTWDSubtotalAdultsOnly,
+    "TWD",
+    "沖繩世界的童票為估算值，未納入這個小計以免看起來像精確金額；加上童票估算的 NT$180-200，全家大約 NT$1,778-1,798。此金額為台幣，不與上面的日幣合計。"
+  );
+
+  /* ---------- 不含在內 ---------- */
+  document.getElementById("not-included").innerHTML = (costs.notIncluded || []).map((n) => {
+    const text = typeof n === "string" ? n : n.text;
+    const link = (typeof n === "object" && n.url)
+      ? ` <a class="timeline-link" href="${escapeHtml(n.url)}" style="margin-left:4px;">${escapeHtml(n.linkLabel || "詳情")} →</a>`
+      : "";
+    return `<li style="margin-bottom:10px;">${escapeHtml(text)}${link}</li>`;
+  }).join("");
+</script>
+
+</body>
+</html>

@@ -397,10 +397,10 @@ window.TRIP = {
       title: "沖繩北部",
       desc: "美麗海水族館 → 燒肉King名護店 → MEGA唐吉訶德名護店",
       hotel: "hotel1",
-      transport: "交通方式尚未定案（包車 或 三段計程車，詳見下方逐時行程備註）",
+      transport: "計程車分段叫車（已定案，約JPY 19,850）",
       weatherAnchor: { lat: 26.4850, lon: 127.8250 },
       ready: true,
-      transportNote: "交通方式尚未定案：包車6人座10H約JPY 43,000／4人座約JPY 34,000；改三段計程車約JPY 19,850（省約1.4-2.3萬，但需分3次叫車、且無兒童座椅）。詳見沖繩行程規劃文件的完整比較。",
+      transportNote: "已定案採三段計程車分段叫車，總車資約JPY 19,850；需分3次分別叫車（尤其晚上唐吉訶德返程建議提前用App預約），且計程車無兒童安全座椅可用。詳見沖繩行程規劃文件。",
       items: [
         {
           type: "stop",
@@ -411,7 +411,7 @@ window.TRIP = {
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
         },
-        { type: "transport", note: "約47分鐘・33.2公里（交通方式未定案，包車或計程車約¥9,750）" },
+        { type: "transport", note: "計程車約47分鐘・33.2公里／¥9,750" },
         {
           type: "stop", highlight: true,
           time: "11:00", timeEnd: "16:00",
@@ -425,7 +425,7 @@ window.TRIP = {
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E7%BE%8E%E3%82%89%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8",
           lat: 26.6940, lon: 127.8778
         },
-        { type: "transport", note: "約40分鐘・17.8公里（交通方式未定案，包車或計程車約¥5,350）" },
+        { type: "transport", note: "計程車約40分鐘・17.8公里／¥5,350" },
         {
           type: "stop", highlight: true,
           time: "17:00", timeEnd: "19:00",
@@ -445,7 +445,7 @@ window.TRIP = {
           mapUrl: "https://www.google.com/maps/search/?api=1&query=MEGA%E5%94%90%E5%90%89%E8%A8%B6%E5%BE%B7%20%E5%90%8D%E8%AD%B7%E5%BA%97",
           lat: 26.5919, lon: 127.9722
         },
-        { type: "transport", note: "約23分鐘・15.8公里（交通方式未定案，包車或計程車約¥4,750）" },
+        { type: "transport", note: "計程車約23分鐘・15.8公里／¥4,750" },
         {
           type: "stop", isEnd: true,
           time: "約20:10",
@@ -502,7 +502,7 @@ window.TRIP = {
       dateLabel: "2026年10月23日",
       weekday: "五",
       title: "換飯店日",
-      desc: "Check-out → AEON MALL沖縄ライカム → Check-in飯店2 → 國際通自由逛街",
+      desc: "Check-out → 沖繩兒童王國 → AEON MALL沖縄ライカム → Check-in飯店2 → 國際通自由逛街",
       hotel: "hotel2",
       transport: "4人座包車・8小時（JPY 32,000）",
       weatherAnchor: { lat: 26.2141, lon: 127.6893 },
@@ -1020,5 +1020,109 @@ window.TRIP = {
     "Day6 的 IIAS 沖繩豐崎與那霸機場是最後補貨機會，但時間較趕（10:30-13:00 + 機場），別把重要的東西留到這時候。",
     "AEON MALL 建議一到就先去服務台索取折扣券；唐吉訶德的優惠券也可以出發前先上網查好。",
     "怕熱、怕融化的商品（ROYCE' 巧克力洋芋片等）建議接近回程再買，或請店家加保冷劑。"
-  ]
+  ],
+
+  /* 費用試算：日幣（包車／計程車／現場購票門票）與台幣（KLOOK 門票）分開計算，
+     不做匯率換算、也不合併成單一總額 */
+  costs: {
+    intro: "Day1、Day4交通費用為日幣包車，向行腳沖繩訂購；Day2交通方式已定案改為計程車分段叫車，費用亦為日幣。美麗海水族館與沖繩世界（玉泉洞）門票會直接透過KLOOK購買，故以台幣列出；其餘景點門票（沖繩兒童王國）為官網現場購票金額，以日幣列出。日幣與台幣分開計算，不合併成單一總額。",
+
+    charters: [
+      {
+        day: 1,
+        label: "Day1 抵達日",
+        detail: "4人座包車・10小時（那霸機場→波上宮→美國村→殘波岬公園→MaxValu讀谷店→飯店1）",
+        amount: 34000,
+        currency: "JPY",
+        status: "confirmed"
+      },
+      {
+        day: 4,
+        label: "Day4 換飯店日",
+        detail: "4人座包車・8小時（飯店1→沖繩兒童王國→AEON MALL沖縄ライカム→飯店2）",
+        amount: 32000,
+        currency: "JPY",
+        status: "confirmed"
+      }
+    ],
+
+    charterSubtotal: 66000,
+
+    taxis: [
+      {
+        day: 2,
+        label: "Day2 沖繩北部（三段計程車分段叫車）",
+        detail: "飯店1→沖繩美麗海水族館 約¥9,750／沖繩美麗海水族館→燒肉King名護店 約¥5,350／MEGA唐吉訶德名護店→飯店1 約¥4,750（燒肉King→唐吉訶德為徒步400公尺，不用叫車）",
+        amount: 19850,
+        currency: "JPY",
+        status: "confirmed",
+        note: "需分3次分別叫車（尤其晚上唐吉訶德返程建議提前用App預約），且計程車無兒童安全座椅可用，詳見Day2規劃文件"
+      }
+    ],
+
+    taxiSubtotal: 19850,
+
+    transportSubtotalConfirmed: 85850,
+
+    ticketsJPY: [
+      {
+        title: "沖繩兒童王國",
+        day: 4,
+        currency: "JPY",
+        adultPrice: 1000,
+        adultCount: 2,
+        childPrice: 0,
+        childNote: "15歲以下免費（我們家小孩4.5歲適用）",
+        subtotal: 2000,
+        source: "官網現場購票",
+        url: "https://www.okzm.jp/fee/"
+      }
+    ],
+
+    ticketsTWD: [
+      {
+        title: "沖繩美麗海水族館",
+        day: 2,
+        currency: "TWD",
+        adultPrice: 427,
+        adultPriceRetail: 444,
+        adultCount: 2,
+        childPrice: 0,
+        childNote: "0-5歲兒童免費入場（我們家小孩4.5歲適用，不用購票）",
+        subtotal: 854,
+        source: "KLOOK",
+        url: "https://www.klook.com/zh-TW/activity/1421-churaumi-aquarium-okinawa/",
+        note: "價格為Klook目前顯示的優惠價，牌價NT$444；Klook價格會隨日期/促銷波動，實際請以下單當下頁面顯示為準"
+      },
+      {
+        title: "沖繩世界（文化王國・玉泉洞）",
+        day: 5,
+        currency: "TWD",
+        adultPrice: 372,
+        adultPriceRetail: 407,
+        adultCount: 2,
+        childPriceEstimate: "約180-200（估算，非Klook頁面直接顯示）",
+        childNote: "⚠️4-14歲兒童需購票，不是免費（跟水族館不同，我們家小孩4.5歲需要買童票）。Klook頁面要選定日期後才會顯示實際童票金額，這裡是依官網日幣「大人¥2,000：小孩¥1,000」約2:1的比例，用大人的Klook價格反推估算，僅供抓預算參考，下單前務必在頁面確認實際金額",
+        subtotal: 744,
+        subtotalNote: "744為2位大人的部分；加上小孩估算的180-200，全家大約924-944",
+        source: "KLOOK",
+        url: "https://www.klook.com/zh-TW/activity/37791-okinawa-world-ticket/",
+        note: "此為「沖繩世界文化王國門票」純門票版本（非含手工藝體驗的加價版本），價格會隨日期/促銷波動，實際請以下單當下頁面顯示為準"
+      }
+    ],
+
+    ticketsJPYSubtotal: 2000,
+    ticketsTWDSubtotalAdultsOnly: 1598,
+
+    notIncluded: [
+      {
+        text: "Day3飯店付費海洋活動（森之湯、水上樂園、水上摩托車、玻璃底船、拖曳龍舟等）：費用依當天實際選擇的項目而定，非固定金額，詳細價格請見飯店詳情頁，這裡不重複列出",
+        url: "hotel1.html",
+        linkLabel: "飯店1詳情頁"
+      },
+      {
+        text: "Day6 IIAS沖繩豐崎內的DMM かりゆし水族館：目前逐日行程沒有排定要進去參觀，只是路過會經過，若當天臨時想去，需另外查詢票價"
+      }
+    ]
+  }
 };
