@@ -209,6 +209,7 @@ function renderTimeline(containerId, items, dayNum) {
         <div class="timeline-item__title">${escapeHtml(item.title)}</div>
         <div class="timeline-item__sub">${item.sub || ""}</div>
         ${renderPhoto(item.photo, dayNum)}
+        ${Array.isArray(item.links) ? `<div class="card-links">${item.links.map((l) => cardLinkHtml(l.url, l.label, item.title)).join("")}</div>` : ""}
         ${item.mapUrl ? `<a class="timeline-link" href="${item.mapUrl}" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px;">Google 地圖 →</a>` : ""}
         ${item.detailLink ? `<a class="timeline-link" href="${item.detailLink.href}" style="display:inline-block; margin-top:8px; margin-left:6px; background:#FFF0EC; border-color:#FFC9BB; color:#E5502E;">${escapeHtml(item.detailLink.label)}</a>` : ""}
         ${choicesHtml}

@@ -280,7 +280,7 @@ window.TRIP = {
       title: "抵達日",
       desc: "那霸機場 → 波上宮 → 美國村 → 殘波岬公園 → MaxValu讀谷店 → 入住飯店1",
       hotel: "hotel1",
-      transport: "6人座包車・10小時（JPY 43,000）",
+      transport: "4人座包車・10小時（JPY 34,000）",
       weatherAnchor: { lat: 26.4850, lon: 127.8250 },
       ready: true,
       items: [
@@ -504,7 +504,7 @@ window.TRIP = {
       title: "換飯店日",
       desc: "Check-out → AEON MALL沖縄ライカム → Check-in飯店2 → 國際通自由逛街",
       hotel: "hotel2",
-      transport: "計程車分段叫車（已定案，約JPY 18,000-18,500）",
+      transport: "4人座包車・8小時（JPY 32,000）",
       weatherAnchor: { lat: 26.2141, lon: 127.6893 },
       ready: true,
       items: [
@@ -517,10 +517,28 @@ window.TRIP = {
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%8B%E3%82%8A%E3%82%86%E3%81%97%E3%83%93%E3%83%BC%E3%83%81%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91",
           lat: 26.4850, lon: 127.8250
         },
-        { type: "transport", note: "計程車約52分鐘・36.2公里／¥10,550" },
+        { type: "transport", note: "約44分鐘・35.1公里" },
+        {
+          type: "stop",
+          time: "10:15", timeEnd: "12:15",
+          title: "沖繩兒童王國",
+          photo: {
+            src: "images/day4-kodomonokuni.jpg",
+            alt: "沖繩兒童王國入口的動物造型招牌",
+            credit: { author: "Abasaa", license: "Public domain", sourceUrl: "https://commons.wikimedia.org/wiki/File:Entrance_to_Okinawa_Zoo_%26_Museum.JPG" }
+          },
+          sub: "動物園＋室內兒童館，約150種動物；15歲以下免費入園（16歲以上¥1,000／人，我們2大人共¥2,000）。必玩：11:00動物餵食秀（屋久島猴／河馬，時間內剛好碰得到）、動物廣場餵食体驗¥300（平日10:00-12:00）、小火車／旋轉木馬¥400、迷你車¥100、スプラッシュパーク免費戲水區（水深約20cm）。行李留在包車上，不用帶進園區",
+          mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E3%81%93%E3%81%A9%E3%82%82%E3%81%AE%E5%9B%BD",
+          lat: 26.3283, lon: 127.8034,
+          links: [
+            { url: "https://www.okzm.jp/", label: "官網介紹" },
+            { url: "https://fullfenblog.tw/okinawa-zoo/", label: "中文介紹" }
+          ]
+        },
+        { type: "transport", note: "約9分鐘・2.6公里" },
         {
           type: "stop", highlight: true,
-          time: "10:00", timeEnd: "14:30",
+          time: "12:25", timeEnd: "16:20",
           title: "AEON MALL沖縄ライカム",
           photo: {
             src: "images/day4-rycom.jpg",
@@ -531,20 +549,20 @@ window.TRIP = {
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB%E6%B2%96%E7%B8%84%E3%83%A9%E3%82%A4%E3%82%AB%E3%83%A0",
           lat: 26.3395, lon: 127.8016
         },
-        { type: "transport", note: "計程車約39分鐘・21.1公里／¥6,250" },
+        { type: "transport", note: "約39分鐘・21.1公里" },
         {
           type: "stop", isEnd: true,
-          time: "15:10", timeEnd: "16:10",
+          time: "17:00", timeEnd: "17:30",
           title: "入住那霸棕櫚皇家度假飯店",
           photo: { src: "images/hotel2.jpg", alt: "市區飯店的示意插圖：街景、頂樓泳池與夕陽", illustration: true },
-          sub: "Check-in飯店2",
+          sub: "Check-in飯店2，包車行程至此結束",
           mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%91%E3%83%BC%E3%83%A0%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%ABNAHA%E5%9B%BD%E9%9A%9B%E9%80%9A",
           lat: 26.2141, lon: 127.6893
         },
         { type: "transport", note: "步行約10分鐘" },
         {
           type: "stop",
-          time: "16:20", timeEnd: "",
+          time: "17:30", timeEnd: "",
           title: "平和通商店街 → 牧志公設市場 → 國際通／屋台村夜市",
           photo: {
             src: "images/day4-kokusai.jpg",
