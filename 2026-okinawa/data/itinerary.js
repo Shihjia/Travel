@@ -1057,12 +1057,30 @@ window.TRIP = {
         currency: "JPY",
         status: "confirmed",
         note: "需分3次分別叫車（尤其晚上唐吉訶德返程建議提前用App預約），且計程車無兒童安全座椅可用，詳見Day2規劃文件"
+      },
+      {
+        day: 5,
+        label: "Day5（飯店2→沖繩世界／玉泉洞→PARCO CITY→飯店2）",
+        detail: "飯店2→沖繩世界（玉泉洞）約¥3,850／沖繩世界→PARCO CITY 約¥6,750（不走收費高速）／PARCO CITY→飯店2 約¥2,150",
+        amount: 12750,
+        currency: "JPY",
+        status: "confirmed",
+        note: "回程PARCO CITY→飯店2也可改搭309號公車約¥280-500（約50分鐘含步行），比計程車省但多花約20分鐘；此金額不影響上面小計，僅供參考"
+      },
+      {
+        day: 6,
+        label: "Day6（飯店2→IIAS沖繩豐崎→那霸機場）",
+        detail: "飯店2→IIAS沖繩豐崎 約¥3,150／IIAS沖繩豐崎→那霸機場 約¥2,050",
+        amount: 5200,
+        currency: "JPY",
+        status: "confirmed",
+        note: "跳表估算範圍約JPY 5,200-5,800，塞車時可能略高；此處小計採較低的5,200"
       }
     ],
 
-    taxiSubtotal: 19850,
+    taxiSubtotal: 37800,
 
-    transportSubtotalConfirmed: 85850,
+    transportSubtotalConfirmed: 103800,
 
     ticketsJPY: [
       {

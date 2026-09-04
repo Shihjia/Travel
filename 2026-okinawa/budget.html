@@ -90,7 +90,8 @@
           ${item.status === "confirmed" ? `<span class="chip chip--pick">已定案</span>` : ""}
         </div>
         <div class="facility-card__row">${escapeHtml(item.detail)}</div>
-        ${item.note ? `<div class="facility-card__row"><strong>⚠️ ${escapeHtml(item.note)}</strong></div>` : ""}
+        ${item.note ? `<div class="facility-card__row" style="border-left:3px solid var(--line-strong); padding-left:10px;">
+          <strong>備註：</strong>${escapeHtml(item.note)}</div>` : ""}
         <div style="font-size:20px; font-weight:900; color:var(--coral-deep); margin-top:4px;">
           ${escapeHtml(money(item.amount, item.currency))}
         </div>
@@ -115,7 +116,9 @@
                                            justify-content:space-between; gap:12px; flex-wrap:wrap;">
       <div>
         <div style="font-size:16px; font-weight:900; color:var(--ink-strong);">交通費用合計（已定案）</div>
-        <div class="facility-card__row" style="margin-top:2px;">包車 JPY 66,000 ＋ 計程車 JPY 19,850，同為日幣故可合計</div>
+        <div class="facility-card__row" style="margin-top:2px;">
+          包車 ${escapeHtml(money(costs.charterSubtotal, "JPY"))} ＋ 計程車 ${escapeHtml(money(costs.taxiSubtotal, "JPY"))}，同為日幣故可合計；六天交通已全部定案
+        </div>
       </div>
       <div style="font-size:23px; font-weight:900; color:var(--coral-deep);">
         ${escapeHtml(money(costs.transportSubtotalConfirmed, "JPY"))}
